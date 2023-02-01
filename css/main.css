@@ -7,3 +7,27 @@
 html {
   font-size: 62.5%;
 }
+
+header {
+  background-color: aqua;
+  height: 8vh;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: blueviolet;
+  height: 84vh;
+}
+
+.calculator {
+  background-color: red;
+  width: 40rem;
+  height: 60rem;
+}
+
+footer {
+  background-color: pink;
+  height: 8vh;
+}
