@@ -31,8 +31,8 @@ main {
   background-color: #00dbde;
   border: 0.3rem solid #001616;
   border-radius: 2%;
-  width: 40rem;
-  height: 60rem;
+  width: min(40rem, 53vh);
+  height: min(60rem, 80vh);
 }
 
 .calculator-screen {
@@ -58,7 +58,6 @@ main {
 }
 
 .btn:hover {
-  /* background-color: rgba(255, 255, 255, 0.05); */
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   transform: translate(-1px, -1px);
   background-color: #8ad9da;
