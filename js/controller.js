@@ -42,7 +42,6 @@ const collectInputs = function () {
   buttons.forEach(button => {
     button.addEventListener('click', event => {
       const btnContent = event.target.innerText;
-
       let btnType;
 
       if (numberValues.includes(btnContent)) {
@@ -55,6 +54,9 @@ const collectInputs = function () {
       if (btnContent === '=') {
         btnType = 'equals';
       }
+      if (btnContent === 'CL') {
+        btnType = 'clear';
+      }
 
       if (currentKey.value != null) {
         previousKey.value = currentKey.value;
@@ -63,6 +65,19 @@ const collectInputs = function () {
 
       currentKey.value = btnContent;
       currentKey.type = btnType;
+
+      if (currentKey.type === 'clear') {
+        activeNumber = [];
+        operatorArr = [];
+        previousKey.value = null;
+        previousKey.type = null;
+        currentKey.value = null;
+        currentKey.type = null;
+        numberOne = '';
+        numberTwo = '';
+        operator = '';
+        result = '';
+      }
 
       if (currentKey.type === 'number') {
         activeNumber.push(currentKey.value);
