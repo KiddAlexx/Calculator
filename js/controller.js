@@ -1,3 +1,5 @@
+'use strict';
+
 const buttons = document.querySelectorAll('.btn');
 
 const numberValues = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
@@ -19,6 +21,22 @@ let previousKey = {
 let numberOne;
 let numberTwo;
 let operator;
+let result;
+
+const calculateResult = function () {
+  if (operator === '+') {
+    result = numberOne + numberTwo;
+  }
+  if (operator === '-') {
+    result = numberOne - numberTwo;
+  }
+  if (operator === 'X') {
+    result = numberOne * numberTwo;
+  }
+  if (operator === '/') {
+    result = numberOne / numberTwo;
+  }
+};
 
 const collectInputs = function () {
   buttons.forEach(button => {
@@ -63,7 +81,7 @@ const collectInputs = function () {
         !numberOne
       ) {
         operatorArr.push(currentKey.value);
-        numberOne = activeNumber.toString().replaceAll(',', '');
+        numberOne = +activeNumber.toString().replaceAll(',', '');
         activeNumber = [];
       }
       if (
@@ -80,8 +98,9 @@ const collectInputs = function () {
         activeNumber.length != 0 &&
         numberOne
       ) {
-        numberTwo = activeNumber.toString().replaceAll(',', '');
+        numberTwo = +activeNumber.toString().replaceAll(',', '');
         activeNumber = [];
+        calculateResult();
       }
 
       console.log(previousKey);
@@ -91,6 +110,7 @@ const collectInputs = function () {
       console.log(numberOne);
       console.log(numberTwo);
       console.log(operator);
+      console.log(result);
     });
   });
 };
