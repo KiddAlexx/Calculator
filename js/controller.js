@@ -20,54 +20,79 @@ let numberOne;
 let numberTwo;
 let operator;
 
-buttons.forEach(button => {
-  button.addEventListener('click', event => {
-    const btnContent = event.target.innerText;
+const collectInputs = function () {
+  buttons.forEach(button => {
+    button.addEventListener('click', event => {
+      const btnContent = event.target.innerText;
 
-    let btnType;
+      let btnType;
 
-    if (numberValues.includes(btnContent)) {
-      btnType = 'number';
-    }
-    if (operatorValues.includes(btnContent)) {
-      btnType = 'operator';
-    }
+      if (numberValues.includes(btnContent)) {
+        btnType = 'number';
+      }
+      if (operatorValues.includes(btnContent)) {
+        btnType = 'operator';
+      }
 
-    if (currentKey.value != null) {
-      previousKey.value = currentKey.value;
-      previousKey.type = currentKey.type;
-    }
+      if (btnContent === '=') {
+        btnType = 'equals';
+      }
 
-    currentKey.value = btnContent;
-    currentKey.type = btnType;
+      if (currentKey.value != null) {
+        previousKey.value = currentKey.value;
+        previousKey.type = currentKey.type;
+      }
 
-    if (
-      currentKey.type === 'number' &&
-      (previousKey.type === 'number' || previousKey.type === null)
-    ) {
-      activeNumber.push(currentKey.value);
-    }
-    if (currentKey.type === 'operator' && activeNumber.length != 0) {
-      operatorArr.push(currentKey.value);
-    }
+      currentKey.value = btnContent;
+      currentKey.type = btnType;
 
-    console.log(previousKey);
-    console.log(currentKey);
-    console.log(activeNumber);
-    console.log(operatorArr);
-  });
-});
+      if (currentKey.type === 'number') {
+        activeNumber.push(currentKey.value);
+      }
+      if (
+        currentKey.type === 'number' &&
+        previousKey.type === 'operator' &&
+        numberOne
+      ) {
+        operator = operatorArr.pop();
+      }
+      if (
+        currentKey.type === 'operator' &&
+        previousKey.type === 'number' &&
+        activeNumber.length != 0 &&
+        !numberOne
+      ) {
+        operatorArr.push(currentKey.value);
+        numberOne = activeNumber.toString().replaceAll(',', '');
+        activeNumber = [];
+      }
+      if (
+        currentKey.type === 'operator' &&
+        previousKey.type === 'operator' &&
+        activeNumber.length === 0 &&
+        numberOne
+      ) {
+        operatorArr.push(currentKey.value);
+      }
 
-/*     if (numberValues.includes(btnContent)) {
-      activeNumber.push(btnContent);
-    }
+      if (
+        currentKey.type === 'equals' &&
+        activeNumber.length != 0 &&
+        numberOne
+      ) {
+        numberTwo = activeNumber.toString().replaceAll(',', '');
+        activeNumber = [];
+      }
 
-    if (operatorValues.includes(btnContent)) {
-      operatorArr.push(btnContent);
-      numberOne = activeNumber.toString().replaceAll(',', '');
-      activeNumber = [];
-    } 
-    
+      console.log(previousKey);
+      console.log(currentKey);
       console.log(activeNumber);
-    console.log(numberOne);
-    console.log(operatorArr);*/
+      console.log(operatorArr);
+      console.log(numberOne);
+      console.log(numberTwo);
+      console.log(operator);
+    });
+  });
+};
+
+collectInputs();
