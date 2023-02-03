@@ -60,6 +60,9 @@ const collectInputs = function () {
       if (btnContent === 'DL') {
         btnType = 'delete';
       }
+      if (btnContent === '+/-') {
+        btnType = 'positiveNegative';
+      }
 
       if (currentKey.value != null) {
         previousKey.value = currentKey.value;
@@ -84,6 +87,11 @@ const collectInputs = function () {
       if (currentKey.type === 'delete') {
         activeNumber.pop();
       }
+      if (currentKey.type === 'positiveNegative') {
+        activeNumber[0] === '-'
+          ? activeNumber.shift()
+          : activeNumber.unshift('-');
+      }
 
       if (currentKey.type === 'number') {
         activeNumber.push(currentKey.value);
@@ -95,12 +103,8 @@ const collectInputs = function () {
       ) {
         operator = operatorArr.pop();
       }
-      if (
-        currentKey.type === 'operator' &&
-        previousKey.type === 'number' &&
-        activeNumber.length != 0 &&
-        !numberOne
-      ) {
+
+      if (currentKey.type === 'operator' && activeNumber && !numberOne) {
         operatorArr.push(currentKey.value);
         numberOne = +activeNumber.toString().replaceAll(',', '');
         activeNumber = [];
