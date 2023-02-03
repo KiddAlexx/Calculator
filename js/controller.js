@@ -85,7 +85,7 @@ const collectInputs = function () {
         numberOne = '';
         numberTwo = '';
         operator = '';
-        currentTotal = '';
+        result = '';
       }
       if (currentKey.type === 'delete') {
         activeNumber.pop();
