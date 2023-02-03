@@ -21,24 +21,21 @@ let previousKey = {
 let numberOne;
 let numberTwo;
 let operator;
-let currentTotal;
 let result;
 
 const calculateResult = function () {
-  if (operator === '+' && !currentTotal) {
+  if (operator === '+') {
     result = numberOne + numberTwo;
   }
-  if (operator === '-' && !currentTotal) {
+  if (operator === '-') {
     result = numberOne - numberTwo;
   }
-  if (operator === 'X' && !currentTotal) {
+  if (operator === 'X') {
     result = numberOne * numberTwo;
   }
-  if (operator === '/' && !currentTotal) {
+  if (operator === '/') {
     result = numberOne / numberTwo;
   }
-
-  currentTotal = result;
 };
 
 const collectInputs = function () {
@@ -135,6 +132,7 @@ const collectInputs = function () {
         numberTwo = +activeNumber.toString().replaceAll(',', '');
         activeNumber = [];
         calculateResult();
+        numberOne = result;
       }
 
       if (
@@ -144,8 +142,10 @@ const collectInputs = function () {
         numberOne
       ) {
         numberTwo = +activeNumber.toString().replaceAll(',', '');
+        operatorArr.push(currentKey.value);
         activeNumber = [];
         calculateResult();
+        numberOne = result;
       }
 
       console.log(previousKey);
@@ -155,7 +155,6 @@ const collectInputs = function () {
       console.log(numberOne);
       console.log(numberTwo);
       console.log(operator);
-      console.log(currentTotal);
       console.log(result);
     });
   });
