@@ -96,9 +96,21 @@ const collectInputs = function () {
           : activeNumber.unshift('-');
       }
 
-      if (currentKey.type === 'number' && previousKey.type !== 'equals') {
+      if (currentKey.type === 'number') {
         activeNumber.push(currentKey.value);
       }
+      if (currentKey.type === 'number' && previousKey.type === 'equals') {
+        operatorArr = [];
+        previousKey.value = null;
+        previousKey.type = null;
+        currentKey.value = null;
+        currentKey.type = null;
+        numberOne = '';
+        numberTwo = '';
+        operator = '';
+        result = '';
+      }
+
       if (currentKey.type === 'decimal' && !activeNumber.includes('.')) {
         activeNumber.push(currentKey.value);
       }
