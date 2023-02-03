@@ -25,6 +25,28 @@ let numberTwo;
 let operator;
 let result;
 
+//////////////////////////////////////////////////
+///////////// VIEW
+////////////
+
+const updateScreen = function () {
+  if (activeNumber.length > 0) {
+    screenLower.innerText = activeNumber.toString().replaceAll(',', '');
+  }
+  if (numberOne && activeNumber.length < 1) {
+    screenLower.innerText = numberOne;
+  }
+  if (numberOne) {
+    screenUpper.innerText = `${numberOne} ${
+      operatorArr.length > 0 ? operatorArr.slice(-1) : operator
+    }`;
+  }
+};
+
+////////////////////////////////////////////////////////
+//////// CALCULATOR FUNCTION
+////////
+
 const calculateResult = function () {
   if (operator === '+') {
     result = numberOne + numberTwo;
@@ -155,7 +177,6 @@ const collectInputs = function () {
         calculateResult();
         numberOne = result;
       }
-      updateScreen();
 
       console.log(previousKey);
       console.log(currentKey);
@@ -165,26 +186,9 @@ const collectInputs = function () {
       console.log(numberTwo);
       console.log(operator);
       console.log(result);
+      updateScreen();
     });
   });
 };
 
 collectInputs();
-
-//////////////////////////////////////////////////
-///////////// VIEW
-////////////
-
-const updateScreen = function () {
-  if (activeNumber) {
-    screenLower.innerText = activeNumber.toString().replaceAll(',', '');
-  }
-
-  if (numberOne && !activeNumber) {
-    screenLower.innerText = numberOne;
-  }
-
-  if (numberOne) {
-    screenUpper.innerText = numberOne;
-  }
-};
