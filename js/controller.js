@@ -22,20 +22,23 @@ let numberOne;
 let numberTwo;
 let operator;
 let currentTotal;
+let result;
 
 const calculateResult = function () {
-  if (operator === '+') {
-    currentTotal = numberOne + numberTwo;
+  if (operator === '+' && !currentTotal) {
+    result = numberOne + numberTwo;
   }
-  if (operator === '-') {
-    currentTotal = numberOne - numberTwo;
+  if (operator === '-' && !currentTotal) {
+    result = numberOne - numberTwo;
   }
-  if (operator === 'X') {
-    currentTotal = numberOne * numberTwo;
+  if (operator === 'X' && !currentTotal) {
+    result = numberOne * numberTwo;
   }
-  if (operator === '/') {
-    currentTotal = numberOne / numberTwo;
+  if (operator === '/' && !currentTotal) {
+    result = numberOne / numberTwo;
   }
+
+  currentTotal = result;
 };
 
 const collectInputs = function () {
@@ -62,6 +65,9 @@ const collectInputs = function () {
       }
       if (btnContent === '+/-') {
         btnType = 'positiveNegative';
+      }
+      if (btnContent === '.') {
+        btnType = 'decimal';
       }
 
       if (currentKey.value != null) {
@@ -94,6 +100,9 @@ const collectInputs = function () {
       }
 
       if (currentKey.type === 'number') {
+        activeNumber.push(currentKey.value);
+      }
+      if (currentKey.type === 'decimal' && !activeNumber.includes('.')) {
         activeNumber.push(currentKey.value);
       }
       if (
@@ -147,6 +156,7 @@ const collectInputs = function () {
       console.log(numberTwo);
       console.log(operator);
       console.log(currentTotal);
+      console.log(result);
     });
   });
 };
