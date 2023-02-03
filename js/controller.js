@@ -1,6 +1,8 @@
 'use strict';
 
 const buttons = document.querySelectorAll('.btn');
+const screenLower = document.querySelector('.screen-lower');
+const screenUpper = document.querySelector('.screen-upper');
 
 const numberValues = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
 const operatorValues = ['+', '-', 'X', '/'];
@@ -153,6 +155,7 @@ const collectInputs = function () {
         calculateResult();
         numberOne = result;
       }
+      updateScreen();
 
       console.log(previousKey);
       console.log(currentKey);
@@ -167,3 +170,21 @@ const collectInputs = function () {
 };
 
 collectInputs();
+
+//////////////////////////////////////////////////
+///////////// VIEW
+////////////
+
+const updateScreen = function () {
+  if (activeNumber) {
+    screenLower.innerText = activeNumber.toString().replaceAll(',', '');
+  }
+
+  if (numberOne && !activeNumber) {
+    screenLower.innerText = numberOne;
+  }
+
+  if (numberOne) {
+    screenUpper.innerText = numberOne;
+  }
+};
