@@ -21,20 +21,20 @@ let previousKey = {
 let numberOne;
 let numberTwo;
 let operator;
-let result;
+let currentTotal;
 
 const calculateResult = function () {
   if (operator === '+') {
-    result = numberOne + numberTwo;
+    currentTotal = numberOne + numberTwo;
   }
   if (operator === '-') {
-    result = numberOne - numberTwo;
+    currentTotal = numberOne - numberTwo;
   }
   if (operator === 'X') {
-    result = numberOne * numberTwo;
+    currentTotal = numberOne * numberTwo;
   }
   if (operator === '/') {
-    result = numberOne / numberTwo;
+    currentTotal = numberOne / numberTwo;
   }
 };
 
@@ -57,6 +57,9 @@ const collectInputs = function () {
       if (btnContent === 'CL') {
         btnType = 'clear';
       }
+      if (btnContent === 'DL') {
+        btnType = 'delete';
+      }
 
       if (currentKey.value != null) {
         previousKey.value = currentKey.value;
@@ -76,7 +79,10 @@ const collectInputs = function () {
         numberOne = '';
         numberTwo = '';
         operator = '';
-        result = '';
+        currentTotal = '';
+      }
+      if (currentKey.type === 'delete') {
+        activeNumber.pop();
       }
 
       if (currentKey.type === 'number') {
@@ -118,6 +124,17 @@ const collectInputs = function () {
         calculateResult();
       }
 
+      if (
+        currentKey.type === 'operator' &&
+        previousKey.type === 'number' &&
+        activeNumber.length != 0 &&
+        numberOne
+      ) {
+        numberTwo = +activeNumber.toString().replaceAll(',', '');
+        activeNumber = [];
+        calculateResult();
+      }
+
       console.log(previousKey);
       console.log(currentKey);
       console.log(activeNumber);
@@ -125,7 +142,7 @@ const collectInputs = function () {
       console.log(numberOne);
       console.log(numberTwo);
       console.log(operator);
-      console.log(result);
+      console.log(currentTotal);
     });
   });
 };
