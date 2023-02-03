@@ -67,7 +67,6 @@ main {
   border: 0.3rem solid #001616;
   border-radius: 5%;
   font-size: 2rem;
-  text-transform: uppercase;
 }
 
 .btn:hover {

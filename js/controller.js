@@ -5,7 +5,7 @@ const screenLower = document.querySelector('.screen-lower');
 const screenUpper = document.querySelector('.screen-upper');
 
 const numberValues = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
-const operatorValues = ['+', '-', 'X', '/'];
+const operatorValues = ['+', '-', 'x', '/'];
 
 let activeNumber = [];
 let operatorArr = [];
@@ -32,14 +32,17 @@ let result;
 const updateScreen = function () {
   if (activeNumber.length > 0) {
     screenLower.innerText = activeNumber.toString().replaceAll(',', '');
-  }
-  if (numberOne && activeNumber.length < 1) {
+  } else if (numberOne && activeNumber.length < 1) {
     screenLower.innerText = numberOne;
+  } else {
+    screenLower.innerText = '';
   }
   if (numberOne) {
     screenUpper.innerText = `${numberOne} ${
       operatorArr.length > 0 ? operatorArr.slice(-1) : operator
     }`;
+  } else {
+    screenUpper.innerText = '';
   }
 };
 
@@ -54,7 +57,7 @@ const calculateResult = function () {
   if (operator === '-') {
     result = numberOne - numberTwo;
   }
-  if (operator === 'X') {
+  if (operator === 'x') {
     result = numberOne * numberTwo;
   }
   if (operator === '/') {
