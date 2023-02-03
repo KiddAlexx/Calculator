@@ -102,26 +102,21 @@ const collectInputs = function () {
       if (currentKey.type === 'decimal' && !activeNumber.includes('.')) {
         activeNumber.push(currentKey.value);
       }
+      if (currentKey.type === 'operator') {
+        operatorArr.push(currentKey.value);
+      }
       if (
         currentKey.type === 'number' &&
         previousKey.type === 'operator' &&
         numberOne
       ) {
         operator = operatorArr.pop();
+        operatorArr = [];
       }
 
       if (currentKey.type === 'operator' && activeNumber && !numberOne) {
-        operatorArr.push(currentKey.value);
         numberOne = +activeNumber.toString().replaceAll(',', '');
         activeNumber = [];
-      }
-      if (
-        currentKey.type === 'operator' &&
-        previousKey.type === 'operator' &&
-        activeNumber.length === 0 &&
-        numberOne
-      ) {
-        operatorArr.push(currentKey.value);
       }
 
       if (
@@ -142,7 +137,6 @@ const collectInputs = function () {
         numberOne
       ) {
         numberTwo = +activeNumber.toString().replaceAll(',', '');
-        operatorArr.push(currentKey.value);
         activeNumber = [];
         calculateResult();
         numberOne = result;
