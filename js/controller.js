@@ -43,6 +43,8 @@ const updateScreen = function () {
     screenUpper.innerText = `${numberOne} ${
       operatorArr.length > 0 ? operatorArr.slice(-1) : operator
     }`;
+  } else if (result && currentKey.type === 'equals') {
+    screenUpper.innerText = `${numberOne} ${operator} ${numberTwo} =`;
   } else if (result) {
     screenUpper.innerText = `${result} ${
       operatorArr.length > 0 ? operatorArr.slice(-1) : operator
