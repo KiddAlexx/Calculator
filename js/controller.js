@@ -7,47 +7,53 @@ const screenUpper = document.querySelector('.screen-upper');
 const numberValues = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
 const operatorValues = ['+', '-', 'x', '/'];
 
-let activeNumber = [];
-let operatorArr = [];
-
-let currentKey = {
-  value: null,
-  type: null,
+const calcData = {
+  activeNumber: [],
+  operatorArr: [],
+  curValue: null,
+  curType: null,
+  prevValue: null,
+  prevType: null,
+  numberOne: '',
+  numberTwo: '',
+  operator: '',
+  result: '',
 };
-
-let previousKey = {
-  value: null,
-  type: null,
-};
-
-let numberOne;
-let numberTwo;
-let operator;
-let result;
 
 //////////////////////////////////////////////////
 ///////////// VIEW
 ////////////
 
 const updateScreen = function () {
-  if (activeNumber.length > 0) {
-    screenLower.innerText = activeNumber.toString().replaceAll(',', '');
-  } else if (numberOne && activeNumber.length < 1 && !result) {
-    screenLower.innerText = numberOne;
-  } else if (result) {
-    screenLower.innerText = result;
+  if (calcData.activeNumber.length > 0) {
+    screenLower.innerText = calcData.activeNumber
+      .toString()
+      .replaceAll(',', '');
+  } else if (
+    calcData.numberOne &&
+    calcData.activeNumber.length < 1 &&
+    !calcData.result
+  ) {
+    screenLower.innerText = calcData.numberOne;
+  } else if (calcData.result) {
+    screenLower.innerText = calcData.result;
   } else {
     screenLower.innerText = '0';
   }
-  if (numberOne && !result) {
-    screenUpper.innerText = `${numberOne} ${
-      operatorArr.length > 0 ? operatorArr.slice(-1) : operator
+
+  if (calcData.numberOne && !calcData.result) {
+    screenUpper.innerText = `${calcData.numberOne} ${
+      calcData.operatorArr.length > 0
+        ? calcData.operatorArr.slice(-1)
+        : calcData.operator
     }`;
-  } else if (result && currentKey.type === 'equals') {
-    screenUpper.innerText = `${numberOne} ${operator} ${numberTwo} =`;
-  } else if (result) {
-    screenUpper.innerText = `${result} ${
-      operatorArr.length > 0 ? operatorArr.slice(-1) : operator
+  } else if (calcData.result && calcData.curType === 'equals') {
+    screenUpper.innerText = `${calcData.numberOne} ${calcData.operator} ${calcData.numberTwo} =`;
+  } else if (calcData.result) {
+    screenUpper.innerText = `${calcData.result} ${
+      calcData.operatorArr.length > 0
+        ? calcData.operatorArr.slice(-1)
+        : calcData.operator
     }`;
   } else {
     screenUpper.innerText = '';
@@ -59,17 +65,17 @@ const updateScreen = function () {
 ////////
 
 const calculateResult = function (numOne, numTwo) {
-  if (operator === '+') {
-    result = numOne + numTwo;
+  if (calcData.operator === '+') {
+    calcData.result = numOne + numTwo;
   }
-  if (operator === '-') {
-    result = numOne - numTwo;
+  if (calcData.operator === '-') {
+    calcData.result = numOne - numTwo;
   }
-  if (operator === 'x') {
-    result = numOne * numTwo;
+  if (calcData.operator === 'x') {
+    calcData.result = numOne * numTwo;
   }
-  if (operator === '/') {
-    result = numOne / numTwo;
+  if (calcData.operator === '/') {
+    calcData.result = numOne / numTwo;
   }
 };
 
@@ -102,103 +108,118 @@ const collectInputs = function () {
         btnType = 'decimal';
       }
 
-      if (currentKey.value != null) {
-        previousKey.value = currentKey.value;
-        previousKey.type = currentKey.type;
+      if (calcData.curValue != null) {
+        calcData.prevValue = calcData.curValue;
+        calcData.prevType = calcData.curType;
       }
 
-      currentKey.value = btnContent;
-      currentKey.type = btnType;
+      calcData.curValue = btnContent;
+      calcData.curType = btnType;
 
-      if (currentKey.type === 'clear') {
-        activeNumber = [];
-        operatorArr = [];
-        previousKey.value = null;
-        previousKey.type = null;
-        currentKey.value = null;
-        currentKey.type = null;
-        numberOne = '';
-        numberTwo = '';
-        operator = '';
-        result = '';
+      if (calcData.curType === 'clear') {
+        calcData.activeNumber = [];
+        calcData.operatorArr = [];
+        calcData.prevValue = null;
+        calcData.prevType = null;
+        calcData.curValue = null;
+        calcData.curType = null;
+        calcData.numberOne = '';
+        calcData.numberTwo = '';
+        calcData.operator = '';
+        calcData.result = '';
       }
-      if (currentKey.type === 'delete') {
-        activeNumber.pop();
+      if (calcData.curType === 'delete') {
+        calcData.activeNumber.pop();
       }
-      if (currentKey.type === 'positiveNegative') {
-        activeNumber[0] === '-'
-          ? activeNumber.shift()
-          : activeNumber.unshift('-');
-      }
-
-      if (currentKey.type === 'number') {
-        activeNumber.push(currentKey.value);
-      }
-      if (currentKey.type === 'number' && result) {
-        numberOne = result;
-      }
-      if (currentKey.type === 'number' && previousKey.type === 'equals') {
-        numberOne = result;
-        operatorArr = [];
-        previousKey.value = null;
-        previousKey.type = null;
-        currentKey.value = null;
-        currentKey.type = null;
-        numberOne = '';
-        numberTwo = '';
-        operator = '';
-        result = '';
+      if (calcData.curType === 'positiveNegative') {
+        calcData.activeNumber[0] === '-'
+          ? calcData.activeNumber.shift()
+          : calcData.activeNumber.unshift('-');
       }
 
-      if (currentKey.type === 'decimal' && !activeNumber.includes('.')) {
-        activeNumber.push(currentKey.value);
+      if (calcData.curType === 'number') {
+        calcData.activeNumber.push(calcData.curValue);
       }
-      if (currentKey.type === 'operator') {
-        operatorArr.push(currentKey.value);
+      if (calcData.curType === 'number' && calcData.result) {
+        calcData.numberOne = calcData.result;
       }
-      if (
-        currentKey.type === 'number' &&
-        previousKey.type === 'operator' &&
-        numberOne
-      ) {
-        operator = operatorArr.pop();
-        operatorArr = [];
-      }
-
-      if (currentKey.type === 'operator' && activeNumber && !numberOne) {
-        numberOne = +activeNumber.toString().replaceAll(',', '');
-        activeNumber = [];
+      if (calcData.curType === 'number' && calcData.prevType === 'equals') {
+        calcData.numberOne = calcData.result;
+        calcData.operatorArr = [];
+        calcData.prevValue = null;
+        calcData.prevType = null;
+        calcData.curValue = null;
+        calcData.curType = null;
+        calcData.numberOne = '';
+        calcData.numberTwo = '';
+        calcData.operator = '';
+        calcData.result = '';
       }
 
       if (
-        currentKey.type === 'equals' &&
-        activeNumber.length != 0 &&
-        numberOne
+        calcData.curType === 'decimal' &&
+        !calcData.activeNumber.includes('.')
       ) {
-        numberTwo = +activeNumber.toString().replaceAll(',', '');
-        activeNumber = [];
-        calculateResult(numberOne, numberTwo);
+        calcData.activeNumber.push(calcData.curValue);
+      }
+      if (calcData.curType === 'operator') {
+        calcData.operatorArr.push(calcData.curValue);
+      }
+      if (
+        calcData.curType === 'number' &&
+        calcData.prevType === 'operator' &&
+        calcData.numberOne
+      ) {
+        calcData.operator = calcData.operatorArr.pop();
+        calcData.operatorArr = [];
       }
 
       if (
-        currentKey.type === 'operator' &&
-        previousKey.type === 'number' &&
-        activeNumber.length != 0 &&
-        numberOne
+        calcData.curType === 'operator' &&
+        calcData.activeNumber &&
+        !calcData.numberOne
       ) {
-        numberTwo = +activeNumber.toString().replaceAll(',', '');
-        activeNumber = [];
-        calculateResult(numberOne, numberTwo);
+        calcData.numberOne = +calcData.activeNumber
+          .toString()
+          .replaceAll(',', '');
+        calcData.activeNumber = [];
       }
 
-      console.log(previousKey);
-      console.log(currentKey);
-      console.log(activeNumber);
-      console.log(operatorArr);
-      console.log(numberOne);
-      console.log(numberTwo);
-      console.log(operator);
-      console.log(result);
+      if (
+        calcData.curType === 'equals' &&
+        calcData.activeNumber.length != 0 &&
+        calcData.numberOne
+      ) {
+        calcData.numberTwo = +calcData.activeNumber
+          .toString()
+          .replaceAll(',', '');
+        calcData.activeNumber = [];
+        calculateResult(calcData.numberOne, calcData.numberTwo);
+      }
+
+      if (
+        calcData.curType === 'operator' &&
+        calcData.prevType === 'number' &&
+        calcData.activeNumber.length != 0 &&
+        calcData.numberOne
+      ) {
+        calcData.numberTwo = +calcData.activeNumber
+          .toString()
+          .replaceAll(',', '');
+        calcData.activeNumber = [];
+        calculateResult(calcData.numberOne, calcData.numberTwo);
+      }
+
+      console.log(calcData.curValue);
+      console.log(calcData.curType);
+      console.log(calcData.prevValue);
+      console.log(calcData.prevType);
+      console.log(calcData.activeNumber);
+      console.log(calcData.operatorArr);
+      console.log(calcData.numberOne);
+      console.log(calcData.numberTwo);
+      console.log(calcData.operator);
+      console.log(calcData.result);
       updateScreen();
     });
   });
