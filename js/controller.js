@@ -132,6 +132,9 @@ const collectInputs = function () {
       if (currentKey.type === 'number') {
         activeNumber.push(currentKey.value);
       }
+      if (currentKey.type === 'number' && result) {
+        numberOne = result;
+      }
       if (currentKey.type === 'number' && previousKey.type === 'equals') {
         numberOne = result;
         operatorArr = [];
@@ -184,7 +187,6 @@ const collectInputs = function () {
         numberTwo = +activeNumber.toString().replaceAll(',', '');
         activeNumber = [];
         calculateResult(numberOne, numberTwo);
-        numberOne = result;
       }
 
       console.log(previousKey);
