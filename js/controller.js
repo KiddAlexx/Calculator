@@ -137,7 +137,7 @@ const collectInputs = function () {
           : calcData.activeNumber.unshift('-');
       }
 
-      if (calcData.curType === 'number') {
+      if (calcData.curType === 'number' && calcData.activeNumber.length < 11) {
         calcData.activeNumber.push(calcData.curValue);
       }
       if (calcData.curType === 'number' && calcData.result) {
