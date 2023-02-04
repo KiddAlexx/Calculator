@@ -32,13 +32,19 @@ let result;
 const updateScreen = function () {
   if (activeNumber.length > 0) {
     screenLower.innerText = activeNumber.toString().replaceAll(',', '');
-  } else if (numberOne && activeNumber.length < 1) {
+  } else if (numberOne && activeNumber.length < 1 && !result) {
     screenLower.innerText = numberOne;
+  } else if (result) {
+    screenLower.innerText = result;
   } else {
     screenLower.innerText = '0';
   }
-  if (numberOne) {
+  if (numberOne && !result) {
     screenUpper.innerText = `${numberOne} ${
+      operatorArr.length > 0 ? operatorArr.slice(-1) : operator
+    }`;
+  } else if (result) {
+    screenUpper.innerText = `${result} ${
       operatorArr.length > 0 ? operatorArr.slice(-1) : operator
     }`;
   } else {
@@ -50,18 +56,18 @@ const updateScreen = function () {
 //////// CALCULATOR FUNCTION
 ////////
 
-const calculateResult = function () {
+const calculateResult = function (numOne, numTwo) {
   if (operator === '+') {
-    result = numberOne + numberTwo;
+    result = numOne + numTwo;
   }
   if (operator === '-') {
-    result = numberOne - numberTwo;
+    result = numOne - numTwo;
   }
   if (operator === 'x') {
-    result = numberOne * numberTwo;
+    result = numOne * numTwo;
   }
   if (operator === '/') {
-    result = numberOne / numberTwo;
+    result = numOne / numTwo;
   }
 };
 
@@ -127,6 +133,7 @@ const collectInputs = function () {
         activeNumber.push(currentKey.value);
       }
       if (currentKey.type === 'number' && previousKey.type === 'equals') {
+        numberOne = result;
         operatorArr = [];
         previousKey.value = null;
         previousKey.type = null;
@@ -165,8 +172,7 @@ const collectInputs = function () {
       ) {
         numberTwo = +activeNumber.toString().replaceAll(',', '');
         activeNumber = [];
-        calculateResult();
-        numberOne = result;
+        calculateResult(numberOne, numberTwo);
       }
 
       if (
@@ -177,7 +183,7 @@ const collectInputs = function () {
       ) {
         numberTwo = +activeNumber.toString().replaceAll(',', '');
         activeNumber = [];
-        calculateResult();
+        calculateResult(numberOne, numberTwo);
         numberOne = result;
       }
 
