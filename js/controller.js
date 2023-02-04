@@ -80,7 +80,7 @@ const calculateResult = function (numOne, numTwo) {
     result = numOne / numTwo;
   }
 
-  result > 11
+  result.toString().length > 11
     ? (calcData.result = result.toExponential(6))
     : (calcData.result = result);
 };
