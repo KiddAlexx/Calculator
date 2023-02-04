@@ -5,7 +5,7 @@ const screenLower = document.querySelector('.screen-lower');
 const screenUpper = document.querySelector('.screen-upper');
 
 const numberValues = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
-const operatorValues = ['+', '-', 'x', '/'];
+const operatorValues = ['+', '-', 'x', '/', '*'];
 
 const calcData = {
   activeNumber: [],
@@ -73,7 +73,7 @@ const calculateResult = function (numOne, numTwo) {
   if (calcData.operator === '-') {
     result = numOne - numTwo;
   }
-  if (calcData.operator === 'x') {
+  if (calcData.operator === 'x' || calcData.operator === '*') {
     result = numOne * numTwo;
   }
   if (calcData.operator === '/') {
@@ -85,7 +85,7 @@ const calculateResult = function (numOne, numTwo) {
     : (calcData.result = result);
 };
 
-const collectInputs = function () {
+const collectInputsClick = function () {
   buttons.forEach(button => {
     button.addEventListener('click', event => {
       const btnContent = event.target.innerText;
@@ -122,100 +122,6 @@ const collectInputs = function () {
       calcData.curValue = btnContent;
       calcData.curType = btnType;
 
-      if (calcData.curType === 'clear') {
-        calcData.activeNumber = [];
-        calcData.operatorArr = [];
-        calcData.prevValue = null;
-        calcData.prevType = null;
-        calcData.curValue = null;
-        calcData.curType = null;
-        calcData.numberOne = '';
-        calcData.numberTwo = '';
-        calcData.operator = '';
-        calcData.result = '';
-      }
-      if (calcData.curType === 'delete') {
-        calcData.activeNumber.pop();
-      }
-      if (calcData.curType === 'positiveNegative') {
-        calcData.activeNumber[0] === '-'
-          ? calcData.activeNumber.shift()
-          : calcData.activeNumber.unshift('-');
-      }
-
-      if (calcData.curType === 'number' && calcData.activeNumber.length < 11) {
-        calcData.activeNumber.push(calcData.curValue);
-      }
-      if (calcData.curType === 'number' && calcData.result) {
-        calcData.numberOne = calcData.result;
-      }
-      if (calcData.curType === 'number' && calcData.prevType === 'equals') {
-        calcData.numberOne = calcData.result;
-        calcData.operatorArr = [];
-        calcData.prevValue = null;
-        calcData.prevType = null;
-        calcData.curValue = null;
-        calcData.curType = null;
-        calcData.numberOne = '';
-        calcData.numberTwo = '';
-        calcData.operator = '';
-        calcData.result = '';
-      }
-
-      if (
-        calcData.curType === 'decimal' &&
-        !calcData.activeNumber.includes('.')
-      ) {
-        calcData.activeNumber.push(calcData.curValue);
-      }
-      if (calcData.curType === 'operator') {
-        calcData.operatorArr.push(calcData.curValue);
-      }
-      if (
-        calcData.curType === 'number' &&
-        calcData.prevType === 'operator' &&
-        calcData.numberOne
-      ) {
-        calcData.operator = calcData.operatorArr.pop();
-        calcData.operatorArr = [];
-      }
-
-      if (
-        calcData.curType === 'operator' &&
-        calcData.activeNumber &&
-        !calcData.numberOne
-      ) {
-        calcData.numberOne = +calcData.activeNumber
-          .toString()
-          .replaceAll(',', '');
-        calcData.activeNumber = [];
-      }
-
-      if (
-        calcData.curType === 'equals' &&
-        calcData.activeNumber.length != 0 &&
-        calcData.numberOne
-      ) {
-        calcData.numberTwo = +calcData.activeNumber
-          .toString()
-          .replaceAll(',', '');
-        calcData.activeNumber = [];
-        calculateResult(calcData.numberOne, calcData.numberTwo);
-      }
-
-      if (
-        calcData.curType === 'operator' &&
-        calcData.prevType === 'number' &&
-        calcData.activeNumber.length != 0 &&
-        calcData.numberOne
-      ) {
-        calcData.numberTwo = +calcData.activeNumber
-          .toString()
-          .replaceAll(',', '');
-        calcData.activeNumber = [];
-        calculateResult(calcData.numberOne, calcData.numberTwo);
-      }
-
       console.log(calcData.curValue);
       console.log(calcData.curType);
       console.log(calcData.prevValue);
@@ -226,9 +132,154 @@ const collectInputs = function () {
       console.log(calcData.numberTwo);
       console.log(calcData.operator);
       console.log(calcData.result);
+
+      calculatorFunctions();
       updateScreen();
     });
   });
 };
 
-collectInputs();
+const collectInputsKey = function () {
+  document.addEventListener('keydown', function (event) {
+    event.preventDefault();
+    const btnContent = event.key;
+    let btnType;
+
+    if (numberValues.includes(btnContent)) {
+      btnType = 'number';
+    }
+    if (operatorValues.includes(btnContent)) {
+      btnType = 'operator';
+    }
+
+    if (btnContent === '=' || btnContent === 'Enter') {
+      btnType = 'equals';
+    }
+    1;
+    if (btnContent === 'Escape') {
+      btnType = 'clear';
+    }
+    if (btnContent === 'Delete' || btnContent === 'Backspace') {
+      btnType = 'delete';
+    }
+    if (btnContent === '+/-') {
+      btnType = 'positiveNegative';
+    }
+    if (btnContent === '.') {
+      btnType = 'decimal';
+    }
+
+    if (calcData.curValue != null) {
+      calcData.prevValue = calcData.curValue;
+      calcData.prevType = calcData.curType;
+    }
+    btnContent === 'Enter'
+      ? (calcData.curValue = '=')
+      : (calcData.curValue = btnContent);
+    calcData.curType = btnType;
+
+    console.log(calcData.curValue);
+    console.log(calcData.curType);
+    console.log(calcData.prevValue);
+    console.log(calcData.prevType);
+    console.log(calcData.activeNumber);
+    console.log(calcData.operatorArr);
+    console.log(calcData.numberOne);
+    console.log(calcData.numberTwo);
+    console.log(calcData.operator);
+    console.log(calcData.result);
+
+    calculatorFunctions();
+    updateScreen();
+  });
+};
+
+const calculatorFunctions = function () {
+  if (calcData.curType === 'clear') {
+    calcData.activeNumber = [];
+    calcData.operatorArr = [];
+    calcData.prevValue = null;
+    calcData.prevType = null;
+    calcData.curValue = null;
+    calcData.curType = null;
+    calcData.numberOne = '';
+    calcData.numberTwo = '';
+    calcData.operator = '';
+    calcData.result = '';
+  }
+  if (calcData.curType === 'delete') {
+    calcData.activeNumber.pop();
+  }
+  if (calcData.curType === 'positiveNegative') {
+    calcData.activeNumber[0] === '-'
+      ? calcData.activeNumber.shift()
+      : calcData.activeNumber.unshift('-');
+  }
+
+  if (calcData.curType === 'number' && calcData.activeNumber.length < 11) {
+    calcData.activeNumber.push(calcData.curValue);
+  }
+  if (calcData.curType === 'number' && calcData.result) {
+    calcData.numberOne = calcData.result;
+  }
+  if (calcData.curType === 'number' && calcData.prevType === 'equals') {
+    calcData.numberOne = calcData.result;
+    calcData.operatorArr = [];
+    calcData.prevValue = null;
+    calcData.prevType = null;
+    calcData.curValue = null;
+    calcData.curType = null;
+    calcData.numberOne = '';
+    calcData.numberTwo = '';
+    calcData.operator = '';
+    calcData.result = '';
+  }
+
+  if (calcData.curType === 'decimal' && !calcData.activeNumber.includes('.')) {
+    calcData.activeNumber.push(calcData.curValue);
+  }
+  if (calcData.curType === 'operator') {
+    calcData.operatorArr.push(calcData.curValue);
+  }
+  if (
+    calcData.curType === 'number' &&
+    calcData.prevType === 'operator' &&
+    calcData.numberOne
+  ) {
+    calcData.operator = calcData.operatorArr.pop();
+    calcData.operatorArr = [];
+  }
+
+  if (
+    calcData.curType === 'operator' &&
+    calcData.activeNumber &&
+    !calcData.numberOne
+  ) {
+    calcData.numberOne = +calcData.activeNumber.toString().replaceAll(',', '');
+    calcData.activeNumber = [];
+  }
+
+  if (
+    calcData.curType === 'equals' &&
+    calcData.activeNumber.length != 0 &&
+    calcData.numberOne
+  ) {
+    calcData.numberTwo = +calcData.activeNumber.toString().replaceAll(',', '');
+    calcData.activeNumber = [];
+    calculateResult(calcData.numberOne, calcData.numberTwo);
+  }
+
+  if (
+    calcData.curType === 'operator' &&
+    calcData.prevType === 'number' &&
+    calcData.activeNumber.length != 0 &&
+    calcData.numberOne
+  ) {
+    calcData.numberTwo = +calcData.activeNumber.toString().replaceAll(',', '');
+    calcData.activeNumber = [];
+    calculateResult(calcData.numberOne, calcData.numberTwo);
+  }
+};
+
+collectInputsClick();
+collectInputsKey();
