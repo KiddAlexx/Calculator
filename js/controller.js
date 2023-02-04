@@ -85,42 +85,46 @@ const calculateResult = function (numOne, numTwo) {
     : (calcData.result = result);
 };
 
+const assignValues = function (content, type) {
+  if (numberValues.includes(content)) {
+    type = 'number';
+  }
+  if (operatorValues.includes(content)) {
+    type = 'operator';
+  }
+
+  if (content === '=' || content === 'Enter') {
+    type = 'equals';
+  }
+
+  if (content === 'Escape') {
+    type = 'clear';
+  }
+  if (content === 'Delete' || content === 'Backspace') {
+    type = 'delete';
+  }
+  if (content === '+/-') {
+    type = 'positiveNegative';
+  }
+  if (content === '.') {
+    type = 'decimal';
+  }
+
+  if (calcData.curValue != null) {
+    calcData.prevValue = calcData.curValue;
+    calcData.prevType = calcData.curType;
+  }
+  content === 'Enter'
+    ? (calcData.curValue = '=')
+    : (calcData.curValue = content);
+  calcData.curType = type;
+};
+
 const collectInputsClick = function () {
   buttons.forEach(button => {
     button.addEventListener('click', event => {
       const btnContent = event.target.innerText;
       let btnType;
-
-      if (numberValues.includes(btnContent)) {
-        btnType = 'number';
-      }
-      if (operatorValues.includes(btnContent)) {
-        btnType = 'operator';
-      }
-
-      if (btnContent === '=') {
-        btnType = 'equals';
-      }
-      if (btnContent === 'CL') {
-        btnType = 'clear';
-      }
-      if (btnContent === 'DL') {
-        btnType = 'delete';
-      }
-      if (btnContent === '+/-') {
-        btnType = 'positiveNegative';
-      }
-      if (btnContent === '.') {
-        btnType = 'decimal';
-      }
-
-      if (calcData.curValue != null) {
-        calcData.prevValue = calcData.curValue;
-        calcData.prevType = calcData.curType;
-      }
-
-      calcData.curValue = btnContent;
-      calcData.curType = btnType;
 
       console.log(calcData.curValue);
       console.log(calcData.curType);
@@ -133,6 +137,7 @@ const collectInputsClick = function () {
       console.log(calcData.operator);
       console.log(calcData.result);
 
+      assignValues(btnContent, btnType);
       calculatorFunctions();
       updateScreen();
     });
@@ -145,39 +150,6 @@ const collectInputsKey = function () {
     const btnContent = event.key;
     let btnType;
 
-    if (numberValues.includes(btnContent)) {
-      btnType = 'number';
-    }
-    if (operatorValues.includes(btnContent)) {
-      btnType = 'operator';
-    }
-
-    if (btnContent === '=' || btnContent === 'Enter') {
-      btnType = 'equals';
-    }
-    1;
-    if (btnContent === 'Escape') {
-      btnType = 'clear';
-    }
-    if (btnContent === 'Delete' || btnContent === 'Backspace') {
-      btnType = 'delete';
-    }
-    if (btnContent === '+/-') {
-      btnType = 'positiveNegative';
-    }
-    if (btnContent === '.') {
-      btnType = 'decimal';
-    }
-
-    if (calcData.curValue != null) {
-      calcData.prevValue = calcData.curValue;
-      calcData.prevType = calcData.curType;
-    }
-    btnContent === 'Enter'
-      ? (calcData.curValue = '=')
-      : (calcData.curValue = btnContent);
-    calcData.curType = btnType;
-
     console.log(calcData.curValue);
     console.log(calcData.curType);
     console.log(calcData.prevValue);
@@ -189,6 +161,7 @@ const collectInputsKey = function () {
     console.log(calcData.operator);
     console.log(calcData.result);
 
+    assignValues(btnContent, btnType);
     calculatorFunctions();
     updateScreen();
   });
