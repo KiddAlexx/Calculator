@@ -10,10 +10,10 @@ const operatorValues = ['+', '-', 'x', '/', '*'];
 const calcData = {
   activeNumber: [],
   operatorArr: [],
-  curValue: null,
-  curType: null,
-  prevValue: null,
-  prevType: null,
+  curValue: '',
+  curType: '',
+  prevValue: '',
+  prevType: '',
   numberOne: '',
   numberTwo: '',
   operator: '',
@@ -97,10 +97,10 @@ const assignValues = function (content, type) {
     type = 'equals';
   }
 
-  if (content === 'Escape') {
+  if (content === 'Escape' || content === 'CL') {
     type = 'clear';
   }
-  if (content === 'Delete' || content === 'Backspace') {
+  if (content === 'Delete' || content === 'Backspace' || content === 'DL') {
     type = 'delete';
   }
   if (content === '+/-') {
@@ -110,7 +110,7 @@ const assignValues = function (content, type) {
     type = 'decimal';
   }
 
-  if (calcData.curValue != null) {
+  if (calcData.curValue != '') {
     calcData.prevValue = calcData.curValue;
     calcData.prevType = calcData.curType;
   }
@@ -126,6 +126,9 @@ const collectInputsClick = function () {
       const btnContent = event.target.innerText;
       let btnType;
 
+      assignValues(btnContent, btnType);
+      calculatorFunctions();
+      updateScreen();
       console.log(calcData.curValue);
       console.log(calcData.curType);
       console.log(calcData.prevValue);
@@ -136,10 +139,6 @@ const collectInputsClick = function () {
       console.log(calcData.numberTwo);
       console.log(calcData.operator);
       console.log(calcData.result);
-
-      assignValues(btnContent, btnType);
-      calculatorFunctions();
-      updateScreen();
     });
   });
 };
@@ -150,6 +149,9 @@ const collectInputsKey = function () {
     const btnContent = event.key;
     let btnType;
 
+    assignValues(btnContent, btnType);
+    calculatorFunctions();
+    updateScreen();
     console.log(calcData.curValue);
     console.log(calcData.curType);
     console.log(calcData.prevValue);
@@ -160,25 +162,22 @@ const collectInputsKey = function () {
     console.log(calcData.numberTwo);
     console.log(calcData.operator);
     console.log(calcData.result);
+  });
+};
 
-    assignValues(btnContent, btnType);
-    calculatorFunctions();
-    updateScreen();
+const resetObjectValues = function (obj) {
+  Object.keys(obj).forEach(value => {
+    if (typeof obj[value] === 'string' || typeof obj[value] === 'number')
+      obj[value] = '';
+    if (Array.isArray(obj[value])) {
+      obj[value] = [];
+    }
   });
 };
 
 const calculatorFunctions = function () {
   if (calcData.curType === 'clear') {
-    calcData.activeNumber = [];
-    calcData.operatorArr = [];
-    calcData.prevValue = null;
-    calcData.prevType = null;
-    calcData.curValue = null;
-    calcData.curType = null;
-    calcData.numberOne = '';
-    calcData.numberTwo = '';
-    calcData.operator = '';
-    calcData.result = '';
+    resetObjectValues(calcData);
   }
   if (calcData.curType === 'delete') {
     calcData.activeNumber.pop();
@@ -196,16 +195,7 @@ const calculatorFunctions = function () {
     calcData.numberOne = calcData.result;
   }
   if (calcData.curType === 'number' && calcData.prevType === 'equals') {
-    calcData.numberOne = calcData.result;
-    calcData.operatorArr = [];
-    calcData.prevValue = null;
-    calcData.prevType = null;
-    calcData.curValue = null;
-    calcData.curType = null;
-    calcData.numberOne = '';
-    calcData.numberTwo = '';
-    calcData.operator = '';
-    calcData.result = '';
+    resetObjectValues(calcData);
   }
 
   if (calcData.curType === 'decimal' && !calcData.activeNumber.includes('.')) {
