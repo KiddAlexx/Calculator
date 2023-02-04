@@ -35,7 +35,7 @@ const updateScreen = function () {
   } else if (numberOne && activeNumber.length < 1) {
     screenLower.innerText = numberOne;
   } else {
-    screenLower.innerText = '';
+    screenLower.innerText = '0';
   }
   if (numberOne) {
     screenUpper.innerText = `${numberOne} ${
