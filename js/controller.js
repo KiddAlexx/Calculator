@@ -65,18 +65,24 @@ const updateScreen = function () {
 ////////
 
 const calculateResult = function (numOne, numTwo) {
+  let result;
+
   if (calcData.operator === '+') {
-    calcData.result = numOne + numTwo;
+    result = numOne + numTwo;
   }
   if (calcData.operator === '-') {
-    calcData.result = numOne - numTwo;
+    result = numOne - numTwo;
   }
   if (calcData.operator === 'x') {
-    calcData.result = numOne * numTwo;
+    result = numOne * numTwo;
   }
   if (calcData.operator === '/') {
-    calcData.result = numOne / numTwo;
+    result = numOne / numTwo;
   }
+
+  result > 11
+    ? (calcData.result = result.toExponential(6))
+    : (calcData.result = result);
 };
 
 const collectInputs = function () {
