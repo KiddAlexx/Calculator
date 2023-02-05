@@ -65,24 +65,24 @@ const updateScreen = function () {
 ////////
 
 const calculateResult = function (numOne, numTwo) {
-  let result;
+  let sum;
 
   if (calcData.operator === '+') {
-    result = numOne + numTwo;
+    sum = numOne + numTwo;
   }
   if (calcData.operator === '-') {
-    result = numOne - numTwo;
+    sum = numOne - numTwo;
   }
   if (calcData.operator === 'x' || calcData.operator === '*') {
-    result = numOne * numTwo;
+    sum = numOne * numTwo;
   }
   if (calcData.operator === '/') {
-    result = numOne / numTwo;
+    sum = numOne / numTwo;
   }
 
-  result.toString().length > 11
-    ? (calcData.result = result.toExponential(6))
-    : (calcData.result = result);
+  sum.toString().length > 11
+    ? (calcData.result = sum.toExponential(6))
+    : (calcData.result = sum);
 };
 
 const assignValues = function (content, type) {
@@ -127,7 +127,7 @@ const collectInputsClick = function () {
       let btnType;
 
       assignValues(btnContent, btnType);
-      calculatorFunctions();
+      calculatorLogic();
       updateScreen();
       console.log(calcData.curValue);
       console.log(calcData.curType);
@@ -150,7 +150,7 @@ const collectInputsKey = function () {
     let btnType;
 
     assignValues(btnContent, btnType);
-    calculatorFunctions();
+    calculatorLogic();
     updateScreen();
     console.log(calcData.curValue);
     console.log(calcData.curType);
@@ -175,35 +175,38 @@ const resetObjectValues = function (obj) {
   });
 };
 
-const calculatorFunctions = function () {
-  if (calcData.curType === 'clear') {
+const calculatorLogic = function () {
+  // If input is 'clear' or if input is a number and the previous input was '=',
+  // then reset all the values in calcData to their initial state.
+  if (
+    calcData.curType === 'clear' ||
+    (calcData.curType === 'number' && calcData.prevType === 'equals')
+  ) {
     resetObjectValues(calcData);
   }
+  // If inout is 'delete',
+  // then remove last value from activeNumber array.
   if (calcData.curType === 'delete') {
     calcData.activeNumber.pop();
   }
+  // If input is '+/-' toggle by adding/removing '-' from the beggining of activeNumber.
   if (calcData.curType === 'positiveNegative') {
     calcData.activeNumber[0] === '-'
       ? calcData.activeNumber.shift()
       : calcData.activeNumber.unshift('-');
   }
-
+  // If  input is a number and the active number is less than 11,
+  // then add current value to the end of the active number array.
   if (calcData.curType === 'number' && calcData.activeNumber.length < 11) {
     calcData.activeNumber.push(calcData.curValue);
   }
+  // If input is a number and the result has a value,
+  // then re-assign the value of the result to numberOne.
   if (calcData.curType === 'number' && calcData.result) {
     calcData.numberOne = calcData.result;
   }
-  if (calcData.curType === 'number' && calcData.prevType === 'equals') {
-    resetObjectValues(calcData);
-  }
-
-  if (calcData.curType === 'decimal' && !calcData.activeNumber.includes('.')) {
-    calcData.activeNumber.push(calcData.curValue);
-  }
-  if (calcData.curType === 'operator') {
-    calcData.operatorArr.push(calcData.curValue);
-  }
+  // If input is a number, previous input was an operator, and number one has value,
+  // then assign last value of operator array to operator and reset operator array to an empty array.
   if (
     calcData.curType === 'number' &&
     calcData.prevType === 'operator' &&
@@ -212,7 +215,18 @@ const calculatorFunctions = function () {
     calcData.operator = calcData.operatorArr.pop();
     calcData.operatorArr = [];
   }
-
+  // If input is '.' and activeNumber does not contain '.'
+  // then add '.' to end of activeNumber
+  if (calcData.curType === 'decimal' && !calcData.activeNumber.includes('.')) {
+    calcData.activeNumber.push(calcData.curValue);
+  }
+  // If  input is an operator,
+  // then add current value to the end of the operator array.
+  if (calcData.curType === 'operator') {
+    calcData.operatorArr.push(calcData.curValue);
+  }
+  // If  input is an operator, activeNumber has value and numberOne does not,
+  // then assign aciveNumber to numberOne and clear activeNumber array.
   if (
     calcData.curType === 'operator' &&
     calcData.activeNumber &&
@@ -221,22 +235,17 @@ const calculatorFunctions = function () {
     calcData.numberOne = +calcData.activeNumber.toString().replaceAll(',', '');
     calcData.activeNumber = [];
   }
-
+  //If input is an operator, previous input was number, activeNumber has value, and numberOne exists,
+  // or input is '=', activeNumber has value, and numberOne exists,
+  // then assign activeNumber to numberTwo, clear activeNumber array and run calculateResult function using numberOne and numberTwo.
   if (
-    calcData.curType === 'equals' &&
-    calcData.activeNumber.length != 0 &&
-    calcData.numberOne
-  ) {
-    calcData.numberTwo = +calcData.activeNumber.toString().replaceAll(',', '');
-    calcData.activeNumber = [];
-    calculateResult(calcData.numberOne, calcData.numberTwo);
-  }
-
-  if (
-    calcData.curType === 'operator' &&
-    calcData.prevType === 'number' &&
-    calcData.activeNumber.length != 0 &&
-    calcData.numberOne
+    (calcData.curType === 'operator' &&
+      calcData.prevType === 'number' &&
+      calcData.activeNumber.length != 0 &&
+      calcData.numberOne) ||
+    (calcData.curType === 'equals' &&
+      calcData.activeNumber.length != 0 &&
+      calcData.numberOne)
   ) {
     calcData.numberTwo = +calcData.activeNumber.toString().replaceAll(',', '');
     calcData.activeNumber = [];
