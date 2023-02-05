@@ -1,12 +1,15 @@
 'use strict';
 
+// Store UI elements.
 const buttons = document.querySelectorAll('.btn');
 const screenLower = document.querySelector('.screen-lower');
 const screenUpper = document.querySelector('.screen-upper');
 
+// Data to use for cheking input type.
 const numberValues = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
 const operatorValues = ['+', '-', 'x', '/', '*'];
 
+// Object to store all calculation data.
 const calcData = {
   activeNumber: [],
   operatorArr: [],
@@ -24,6 +27,7 @@ const calcData = {
 ///////////// VIEW
 ////////////
 
+// Check current data values and update screen accordingly.
 const updateScreen = function () {
   if (calcData.activeNumber.length > 0) {
     screenLower.innerText = calcData.activeNumber
@@ -60,10 +64,11 @@ const updateScreen = function () {
   }
 };
 
-////////////////////////////////////////////////////////
-//////// CALCULATOR FUNCTION
-////////
+//////////////////////////////////////////////////
+//////////// CALCULATOR FUNCTION
+///////////
 
+// Takes two numbers and calculates result based upon current operator value.
 const calculateResult = function (numOne, numTwo) {
   let sum;
 
@@ -80,12 +85,17 @@ const calculateResult = function (numOne, numTwo) {
     sum = numOne / numTwo;
   }
 
+  // Assign sum to result.
+  // If length of sum greater than 11,
+  // then convert to exponential notation with 6 decimal places.
   sum.toString().length > 11
     ? (calcData.result = sum.toExponential(6))
     : (calcData.result = sum);
 };
 
-const assignValues = function (content) {
+// Assigns data type based upon input.
+// The content will be passed from the collecInputs functions.
+const assignDataValues = function (content) {
   let type;
 
   if (numberValues.includes(content)) {
@@ -111,23 +121,27 @@ const assignValues = function (content) {
   if (content === '.') {
     type = 'decimal';
   }
-
+  // Checks whether there has been a previous input,
+  // Updates previous value and type with current value and type.
   if (calcData.curValue != '') {
     calcData.prevValue = calcData.curValue;
     calcData.prevType = calcData.curType;
   }
+  //Assigns content to curValue and type to curType
+  //Checks for 'Enter' key and converts content to '=' before assigning for use in calculations.
   content === 'Enter'
     ? (calcData.curValue = '=')
     : (calcData.curValue = content);
   calcData.curType = type;
 };
 
+// Handle button clicks, update calculation data and display results on screen
 const collectInputsClick = function () {
   buttons.forEach(button => {
     button.addEventListener('click', event => {
       const btnContent = event.target.innerText;
 
-      assignValues(btnContent);
+      assignDataValues(btnContent);
       calculatorLogic();
       updateScreen();
       console.log(calcData.curValue);
@@ -144,12 +158,13 @@ const collectInputsClick = function () {
   });
 };
 
+// Handle keypress, update calculation data and display results on screen
 const collectInputsKey = function () {
   document.addEventListener('keydown', function (event) {
     event.preventDefault();
     const btnContent = event.key;
 
-    assignValues(btnContent);
+    assignDataValues(btnContent);
     calculatorLogic();
     updateScreen();
     console.log(calcData.curValue);
@@ -165,6 +180,7 @@ const collectInputsKey = function () {
   });
 };
 
+// Take an object as argument and resets it's values to empty string or empty array.
 const resetObjectValues = function (obj) {
   Object.keys(obj).forEach(value => {
     if (typeof obj[value] === 'string' || typeof obj[value] === 'number')
@@ -175,6 +191,7 @@ const resetObjectValues = function (obj) {
   });
 };
 
+// Main logic of calculator. Assigns data values based upon input.
 const calculatorLogic = function () {
   // If input is 'clear' or if input is a number and the previous input was '=',
   // then reset all the values in calcData to their initial state.
