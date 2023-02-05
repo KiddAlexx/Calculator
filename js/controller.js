@@ -85,7 +85,9 @@ const calculateResult = function (numOne, numTwo) {
     : (calcData.result = sum);
 };
 
-const assignValues = function (content, type) {
+const assignValues = function (content) {
+  let type;
+
   if (numberValues.includes(content)) {
     type = 'number';
   }
@@ -124,9 +126,8 @@ const collectInputsClick = function () {
   buttons.forEach(button => {
     button.addEventListener('click', event => {
       const btnContent = event.target.innerText;
-      let btnType;
 
-      assignValues(btnContent, btnType);
+      assignValues(btnContent);
       calculatorLogic();
       updateScreen();
       console.log(calcData.curValue);
@@ -147,9 +148,8 @@ const collectInputsKey = function () {
   document.addEventListener('keydown', function (event) {
     event.preventDefault();
     const btnContent = event.key;
-    let btnType;
 
-    assignValues(btnContent, btnType);
+    assignValues(btnContent);
     calculatorLogic();
     updateScreen();
     console.log(calcData.curValue);
