@@ -93,7 +93,7 @@ const calculateResult = function (numOne, numTwo) {
     : (calcData.result = sum);
 };
 
-// Assigns data type based upon input.
+// Takes an input and assigns it a type and a value.
 // The content will be passed from the collecInputs functions.
 const assignDataValues = function (content) {
   let type;
@@ -193,21 +193,19 @@ const collectInputsKey = function () {
 
 const animateKeys = function () {
   document.addEventListener('keydown', function (e) {
-    const btnContent = e.key;
-    const btnValue = assignDataValues(btnContent);
+    const btnValue = assignDataValues(e.key);
 
     buttons.forEach(function (btn) {
-      if (btn.innerText === btnContent || btn.innerText === btnValue) {
+      if (btn.innerText === btnValue) {
         btn.classList.add('active');
       }
     });
   });
 
   document.addEventListener('keyup', function (e) {
-    const btnContent = e.key;
-    const btnValue = assignDataValues(btnContent);
+    const btnValue = assignDataValues(e.key);
     buttons.forEach(function (btn) {
-      if (btn.innerText === btnContent || btn.innerText === btnValue) {
+      if (btn.innerText === btnValue) {
         btn.classList.remove('active');
       }
     });
