@@ -17,7 +17,7 @@ html {
 }
 
 header {
-  background-color: aqua;
+  background-color: #001616;
   height: 8rem;
 }
 
@@ -29,14 +29,14 @@ main {
   /* height: 84vh; */
 }
 
-.calculator {
+.calculator-body {
   padding: 1rem;
   display: grid;
   gap: 1rem;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(7, 1fr);
   /*  background: linear-gradient(to left, #fc00ff, #00dbde); */
-  background-color: #00dbde;
+  background-color: #001616;
   border: 0.3rem solid #001616;
   border-radius: 2%;
   /*  width: min(40rem, 53vh);
@@ -71,27 +71,27 @@ main {
 }
 
 .btn {
-  background-color: #99f1f2;
-  color: black;
-  border: 0.3rem solid #001616;
+  background-color: #001616;
+  color: #fc00ff;
+  border: 0.3rem solid #fc00ff;
   border-radius: 5%;
-  font-size: 2rem;
+  font-size: 1.8rem;
 }
 
 .btn:hover {
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   transform: translate(-1px, -1px);
-  background-color: #8ad9da;
+  background-color: #001616;
 }
 .btn:active {
   transform: translate(+1px, +1px);
-  background-color: #8ad9da;
+  background-color: #001616;
 }
 .btn-rectangle {
   border-radius: 2%;
 }
 
 footer {
-  background-color: pink;
+  background-color: #001616;
   height: 8rem;
 }
