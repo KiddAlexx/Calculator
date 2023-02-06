@@ -6,7 +6,9 @@
 
 html {
   font-size: 62.5%;
-  font-family: 'Teko', sans-serif;
+}
+body {
+  position: relative;
 }
 
 .main-page {
@@ -17,6 +19,7 @@ html {
 }
 
 header {
+  opacity: 0.8;
   background-color: #001616;
   height: 8rem;
 }
@@ -64,6 +67,7 @@ main {
   height: min(60rem, 80vh); */
   width: 35.2rem;
   height: 46.2rem;
+  font-family: 'Teko', sans-serif;
 }
 
 .calculator-screen {
@@ -114,7 +118,6 @@ main {
 .btn:active {
   box-shadow: inset 2px 2px 2px 0 rgba(0, 0, 0, 0.25),
     inset -2px -2px 2px 0 rgba(236, 134, 221, 0.64);
-
   transform: translate(+1.5px, +1.5px);
   background-color: #001616;
 }
@@ -123,6 +126,7 @@ main {
 }
 
 footer {
+  opacity: 0.8;
   background-color: #001616;
   height: 8rem;
 }
