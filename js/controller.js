@@ -4,6 +4,7 @@
 const buttons = document.querySelectorAll('.btn');
 const screenLower = document.querySelector('.screen-lower');
 const screenUpper = document.querySelector('.screen-upper');
+const btn7 = document.querySelector('#btn-7');
 
 // Data to use for cheking input type.
 const numberValues = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
@@ -138,8 +139,8 @@ const assignDataValues = function (content) {
 // Handle button clicks, update calculation data and display results on screen
 const collectInputsClick = function () {
   buttons.forEach(button => {
-    button.addEventListener('click', event => {
-      const btnContent = event.target.innerText;
+    button.addEventListener('click', e => {
+      const btnContent = e.target.innerText;
 
       assignDataValues(btnContent);
       calculatorLogic();
@@ -158,11 +159,15 @@ const collectInputsClick = function () {
   });
 };
 
-// Handle keypress, update calculation data and display results on screen
+// Handle keypress, update calculation data and display results on screen.
 const collectInputsKey = function () {
-  document.addEventListener('keydown', function (event) {
-    event.preventDefault();
-    const btnContent = event.key;
+  document.addEventListener('keydown', function (e) {
+    e.preventDefault();
+    const btnContent = e.key;
+
+    /*     if (btnContent === '7') {
+      btn7.classList.add('btn:active');
+    } */
 
     assignDataValues(btnContent);
     calculatorLogic();
@@ -177,6 +182,27 @@ const collectInputsKey = function () {
     console.log(calcData.numberTwo);
     console.log(calcData.operator);
     console.log(calcData.result);
+  });
+};
+
+const animateKeys = function () {
+  document.addEventListener('keydown', function (e) {
+    const btnContent = e.key;
+
+    buttons.forEach(function (btn) {
+      if (btn.innerText === btnContent) {
+        btn.classList.add('active');
+      }
+    });
+  });
+
+  document.addEventListener('keyup', function (e) {
+    const btnContent = e.key;
+    buttons.forEach(function (btn) {
+      if (btn.innerText === btnContent) {
+        btn.classList.remove('active');
+      }
+    });
   });
 };
 
@@ -272,3 +298,4 @@ const calculatorLogic = function () {
 
 collectInputsClick();
 collectInputsKey();
+animateKeys();

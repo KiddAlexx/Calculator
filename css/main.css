@@ -100,6 +100,10 @@ main {
   grid-column: 1/3;
 }
 
+.btn-rectangle {
+  border-radius: 2%;
+}
+
 .btn {
   font-family: 'Teko', sans-serif;
   background-color: #001616;
@@ -121,8 +125,12 @@ main {
   transform: translate(+1.5px, +1.5px);
   background-color: #001616;
 }
-.btn-rectangle {
-  border-radius: 2%;
+
+.active {
+  box-shadow: inset 2px 2px 2px 0 rgba(0, 0, 0, 0.25),
+    inset -2px -2px 2px 0 rgba(236, 134, 221, 0.64);
+  transform: translate(+1.5px, +1.5px);
+  background-color: #001616;
 }
 
 footer {
