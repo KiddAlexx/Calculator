@@ -48,19 +48,24 @@ main {
 
 .calculator-body {
   opacity: 0.9;
-  padding: 1rem;
+  padding: 1.1rem;
+
   display: grid;
   gap: 1rem;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(7, 1fr);
   /*  background: linear-gradient(to left, #fc00ff, #00dbde); */
+
   background-color: #001616;
-  border: 0.3rem solid #001616;
+  /* border: 0.3rem solid #001616; */
   border-radius: 2%;
+  box-shadow: 10px 10px 10px 0 rgba(209, 36, 174, 0.46),
+    -8px -8px 10px 0 rgba(0, 0, 0, 0.3);
+
   /*  width: min(40rem, 53vh);
   height: min(60rem, 80vh); */
-  width: 34rem;
-  height: 42rem;
+  width: 35.2rem;
+  height: 46.2rem;
 }
 
 .calculator-screen {
