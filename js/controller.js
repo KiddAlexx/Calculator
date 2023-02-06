@@ -112,7 +112,7 @@ const assignDataValues = function (content) {
   if (content === 'Escape' || content === 'CL') {
     type = 'clear';
   }
-  if (content === 'Delete' || content === 'Backspace' || content === 'DL') {
+  if (content === 'Delete' || content === 'Backspace' || content === 'DEL') {
     type = 'delete';
   }
   if (content === '+/-') {
@@ -201,7 +201,7 @@ const calculatorLogic = function () {
   ) {
     resetObjectValues(calcData);
   }
-  // If inout is 'delete',
+  // If input is 'delete',
   // then remove last value from activeNumber array.
   if (calcData.curType === 'delete') {
     calcData.activeNumber.pop();
