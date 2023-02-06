@@ -9,9 +9,16 @@ html {
   font-family: 'Roboto', sans-serif;
 }
 
+.main-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 header {
   background-color: aqua;
-  height: 8vh;
+  height: 8rem;
 }
 
 main {
@@ -19,7 +26,7 @@ main {
   justify-content: center;
   align-items: center;
 
-  height: 84vh;
+  /* height: 84vh; */
 }
 
 .calculator {
@@ -32,8 +39,10 @@ main {
   background-color: #00dbde;
   border: 0.3rem solid #001616;
   border-radius: 2%;
-  width: min(40rem, 53vh);
-  height: min(60rem, 80vh);
+  /*  width: min(40rem, 53vh);
+  height: min(60rem, 80vh); */
+  width: 34rem;
+  height: 42rem;
 }
 
 .calculator-screen {
@@ -84,5 +93,5 @@ main {
 
 footer {
   background-color: pink;
-  height: 8vh;
+  height: 8rem;
 }
