@@ -39,7 +39,8 @@ main {
   opacity: 0.8;
   overflow: hidden;
 }
-.bg-video__content {
+
+.bg-video-content {
   height: 100%;
   width: 100%;
   object-fit: cover;
@@ -90,18 +91,22 @@ main {
 .btn {
   background-color: #001616;
   color: #d720b2;
-  border: 0.3rem solid #d720b2;
+  border: 0;
   border-radius: 5%;
   font-size: 1.8rem;
+  box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.25),
+    -2px -2px 2px 0 rgba(255, 255, 255, 0.3);
 }
 
-.btn:hover {
+/* .btn:hover {
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   transform: translate(-1px, -1px);
   background-color: #001616;
-}
+} */
 .btn:active {
-  transform: translate(+1px, +1px);
+  box-shadow: inset 2px 2px 2px 0 rgba(0, 0, 0, 0.25),
+    inset -2px -2px 2px 0 rgba(255, 255, 255, 0.3);
+  transform: translate(+1.5px, +1.5px);
   background-color: #001616;
 }
 .btn-rectangle {
