@@ -4,11 +4,10 @@
 const buttons = document.querySelectorAll('.btn');
 const screenLower = document.querySelector('.screen-lower');
 const screenUpper = document.querySelector('.screen-upper');
-const btn7 = document.querySelector('#btn-7');
 
 // Data to use for cheking input type.
 const numberValues = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
-const operatorValues = ['+', '-', 'x', '/', '*'];
+const operatorValues = ['+', '-', 'x', '/'];
 
 // Object to store all calculation data.
 const calcData = {
@@ -98,29 +97,41 @@ const calculateResult = function (numOne, numTwo) {
 // The content will be passed from the collecInputs functions.
 const assignDataValues = function (content) {
   let type;
+  let value;
 
   if (numberValues.includes(content)) {
     type = 'number';
+    value = content;
   }
   if (operatorValues.includes(content)) {
     type = 'operator';
+    value = content;
+  }
+
+  if (content === '*') {
+    type = 'operator';
+    value = 'x';
   }
 
   if (content === '=' || content === 'Enter') {
     type = 'equals';
+    value = '=';
   }
 
   if (content === 'Escape' || content === 'CL') {
     type = 'clear';
+    value = 'CL';
   }
   if (content === 'Delete' || content === 'Backspace' || content === 'DEL') {
     type = 'delete';
+    value = 'DEL';
   }
   if (content === '+/-') {
     type = 'positiveNegative';
   }
   if (content === '.') {
     type = 'decimal';
+    value = '.';
   }
   // Checks whether there has been a previous input,
   // Updates previous value and type with current value and type.
@@ -130,10 +141,9 @@ const assignDataValues = function (content) {
   }
   //Assigns content to curValue and type to curType
   //Checks for 'Enter' key and converts content to '=' before assigning for use in calculations.
-  content === 'Enter'
-    ? (calcData.curValue = '=')
-    : (calcData.curValue = content);
+  calcData.curValue = value;
   calcData.curType = type;
+  return value;
 };
 
 // Handle button clicks, update calculation data and display results on screen
@@ -165,10 +175,6 @@ const collectInputsKey = function () {
     e.preventDefault();
     const btnContent = e.key;
 
-    /*     if (btnContent === '7') {
-      btn7.classList.add('btn:active');
-    } */
-
     assignDataValues(btnContent);
     calculatorLogic();
     updateScreen();
@@ -188,9 +194,10 @@ const collectInputsKey = function () {
 const animateKeys = function () {
   document.addEventListener('keydown', function (e) {
     const btnContent = e.key;
+    const btnValue = assignDataValues(btnContent);
 
     buttons.forEach(function (btn) {
-      if (btn.innerText === btnContent) {
+      if (btn.innerText === btnContent || btn.innerText === btnValue) {
         btn.classList.add('active');
       }
     });
@@ -198,8 +205,9 @@ const animateKeys = function () {
 
   document.addEventListener('keyup', function (e) {
     const btnContent = e.key;
+    const btnValue = assignDataValues(btnContent);
     buttons.forEach(function (btn) {
-      if (btn.innerText === btnContent) {
+      if (btn.innerText === btnContent || btn.innerText === btnValue) {
         btn.classList.remove('active');
       }
     });
