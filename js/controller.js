@@ -310,9 +310,20 @@ const calculatorLogic = function () {
   }
   // If input is '.' and activeNumber does not contain '.'
   // then add '.' to end of activeNumber
+  if (
+    calcData.curType === 'decimal' &&
+    !calcData.activeNumber.includes('.') &&
+    calcData.activeNumber.length === 0
+  ) {
+    calcData.activeNumber.push('0', calcData.curValue);
+  }
+  // If input is '.' and activeNumber does not contain '.'
+  // and activeNumber is empty
+  // then add 0. at the beggining of activeNumber
   if (calcData.curType === 'decimal' && !calcData.activeNumber.includes('.')) {
     calcData.activeNumber.push(calcData.curValue);
   }
+
   // If  input is an operator,
   // then add current value to the end of the operator array.
   if (calcData.curType === 'operator') {
