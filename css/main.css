@@ -46,6 +46,29 @@
 
   --font-calc: 'Teko', sans-serif;
 }
+.theme-hollow-knight {
+  /* used in header + footer + calc */
+  --color-black: #001616;
+  /* used on calc-btn */
+  --color-text: #65b5a1;
+  --color-hover: #0f2731;
+
+  --screen-gradient: linear-gradient(to bottom, #3e5286, #699aa8);
+
+  /* Used on calc btns */
+  --shadow-dark-sm: 2px 2px 2px 0 rgba(0, 0, 0, 0.25);
+  --highlight-main-sm: -2px -2px 2px 0 rgb(128, 189, 139);
+  /* Used on calc screen */
+  --highlight-dark-sm: -2px -2px 2px 0 rgba(0, 0, 0, 0.25);
+
+  /* Used on calc body */
+  --highlight-dark-md: -8px -8px 10px 0 rgba(0, 0, 0, 0.3);
+  --shadow-main-md: 4px 4px 20px 0 rgba(128, 189, 139, 0.644);
+
+  --vid-opacity: 0.85;
+
+  --font-calc: 'Teko', sans-serif;
+}
 
 /************************** Main Style **************************/
 
@@ -61,7 +84,6 @@ html {
 body {
   position: relative;
   font-size: 1.06rem;
-  transition: all 5s;
 }
 
 .main-page {
@@ -86,7 +108,6 @@ main {
   z-index: -1;
   opacity: var(--vid-opacity);
   overflow: hidden;
-  transition: opacity 5s ease-out;
 }
 
 .bg-video-content {
@@ -115,6 +136,13 @@ header {
   font-weight: 300;
   font-size: 3rem;
   letter-spacing: 0.4rem;
+}
+
+.btn-theme:hover {
+  transform: scale(1.2);
+}
+.btn-theme:active {
+  transform: scale(0.9);
 }
 .header-left {
   display: flex;

@@ -79,7 +79,7 @@ const switchThemes = function () {
         btnContent === 'Neon City' &&
         !bodyEl.classList.contains('theme-neon-city')
       ) {
-        bodyEl.classList.remove('theme-neon-city', 'theme-matrix');
+        bodyEl.className = '';
         bodyEl.classList.add('theme-neon-city');
         bgVideoSource.src = 'img/neon-city-bg.mp4';
         bgVideo.load();
@@ -89,9 +89,18 @@ const switchThemes = function () {
         btnContent === 'Matrix' &&
         !bodyEl.classList.contains('theme-matrix')
       ) {
-        bodyEl.classList.remove('theme-neon-city', 'theme-matrix');
+        bodyEl.className = '';
         bodyEl.classList.add('theme-matrix');
         bgVideoSource.src = 'img/matrix-1080p.mp4';
+        bgVideo.load();
+      }
+      if (
+        btnContent === 'Hollow Knight' &&
+        !bodyEl.classList.contains('theme-hollow-knight')
+      ) {
+        bodyEl.className = '';
+        bodyEl.classList.add('theme-hollow-knight');
+        bgVideoSource.src = 'img/hollow-knight-sm.mp4';
         bgVideo.load();
       }
 
