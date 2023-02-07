@@ -61,6 +61,7 @@ html {
 body {
   position: relative;
   font-size: 1.06rem;
+  transition: all 5s;
 }
 
 .main-page {
@@ -85,6 +86,7 @@ main {
   z-index: -1;
   opacity: var(--vid-opacity);
   overflow: hidden;
+  transition: opacity 5s ease-out;
 }
 
 .bg-video-content {
@@ -105,7 +107,7 @@ header {
   gap: 5rem;
 }
 
-.btn-header {
+.btn-theme {
   border: none;
   background: none;
   color: white;

@@ -2,6 +2,10 @@
 
 // Store UI elements.
 const buttons = document.querySelectorAll('.btn-calc');
+const btnTheme = document.querySelectorAll('.btn-theme');
+const bodyEl = document.querySelector('body');
+const bgVideoSource = document.querySelector('.bg-video-content source');
+const bgVideo = document.querySelector('.bg-video-content');
 const screenLower = document.querySelector('.screen-lower');
 const screenUpper = document.querySelector('.screen-upper');
 
@@ -62,6 +66,38 @@ const updateScreen = function () {
   } else {
     screenUpper.innerText = '';
   }
+};
+
+// Function to switch between themes
+
+const switchThemes = function () {
+  btnTheme.forEach(button => {
+    button.addEventListener('click', e => {
+      const btnContent = e.target.innerText;
+
+      if (
+        btnContent === 'Neon City' &&
+        !bodyEl.classList.contains('theme-neon-city')
+      ) {
+        bodyEl.classList.remove('theme-neon-city', 'theme-matrix');
+        bodyEl.classList.add('theme-neon-city');
+        bgVideoSource.src = 'img/neon-city-bg.mp4';
+        bgVideo.load();
+      }
+
+      if (
+        btnContent === 'Matrix' &&
+        !bodyEl.classList.contains('theme-matrix')
+      ) {
+        bodyEl.classList.remove('theme-neon-city', 'theme-matrix');
+        bodyEl.classList.add('theme-matrix');
+        bgVideoSource.src = 'img/matrix-1080p.mp4';
+        bgVideo.load();
+      }
+
+      console.log(btnContent);
+    });
+  });
 };
 
 //////////////////////////////////////////////////
@@ -304,3 +340,4 @@ const calculatorLogic = function () {
 collectInputsClick();
 collectInputsKey();
 animateKeys();
+switchThemes();
