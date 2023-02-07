@@ -140,13 +140,12 @@ const assignDataValues = function (content) {
     calcData.prevType = calcData.curType;
   }
   //Assigns content to curValue and type to curType
-  //Checks for 'Enter' key and converts content to '=' before assigning for use in calculations.
   calcData.curValue = value;
   calcData.curType = type;
   return value;
 };
 
-// Handle button clicks, update calculation data and display results on screen
+// Handle button clicks, update calculation data and display results on screen.
 const collectInputsClick = function () {
   buttons.forEach(button => {
     button.addEventListener('click', e => {
