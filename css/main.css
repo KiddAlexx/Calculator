@@ -47,8 +47,6 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-
-  /* height: 84vh; */
 }
 
 .bg-video {
@@ -121,7 +119,7 @@ main {
   border-radius: 2%;
 }
 
-.btn {
+.btn-calc {
   font-family: 'Teko', sans-serif;
   background-color: var(--color-black);
   color: var(--color-text);
@@ -132,10 +130,10 @@ main {
   box-shadow: var(--shadow-dark-sm), var(--highlight-main-sm);
 }
 
-.btn:hover {
+.btn-calc:hover {
   background-color: #0f2731;
 }
-.btn:active {
+.btn-calc:active {
   box-shadow: inset var(--shadow-dark-sm), inset var(--highlight-main-sm);
   transform: translate(+1.5px, +1.5px);
   background-color: var(--color-black);

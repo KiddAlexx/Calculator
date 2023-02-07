@@ -1,7 +1,7 @@
 'use strict';
 
 // Store UI elements.
-const buttons = document.querySelectorAll('.btn');
+const buttons = document.querySelectorAll('.btn-calc');
 const screenLower = document.querySelector('.screen-lower');
 const screenUpper = document.querySelector('.screen-upper');
 
