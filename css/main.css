@@ -71,8 +71,7 @@ main {
 /************************** Header Style **************************/
 
 header {
-  opacity: 0.8;
-  background-color: var(--color-black);
+  background-color: rgba(0, 22, 22, 0.9);
   height: 8rem;
 }
 
@@ -154,7 +153,34 @@ header {
 /************************ Footer Style ************************/
 
 footer {
-  opacity: 0.8;
-  background-color: var(--color-black);
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  align-items: center;
+  font-family: var(--font-calc);
+  font-weight: 300;
+  color: white;
+
+  background-color: rgba(0, 22, 22, 0.9);
   height: 8rem;
+  font-size: 3rem;
+  letter-spacing: 0.4rem;
+  color: white;
+}
+.icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.icon-github {
+  fill: var(--color-text);
+  height: 5rem;
+  transition: all 0.2s;
+}
+
+.icon-github:hover {
+  transform: scale(1.2);
+}
+.icon-github:active {
+  transform: scale(0.9);
 }
