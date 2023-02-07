@@ -19,6 +19,31 @@
   --highlight-dark-md: -8px -8px 10px 0 rgba(0, 0, 0, 0.3);
   --shadow-main-md: 10px 10px 10px 0 rgba(209, 36, 174, 0.3);
 
+  --vid-opacity: 0.8;
+
+  --font-calc: 'Teko', sans-serif;
+}
+.theme-matrix {
+  /* used in header + footer + calc */
+  --color-black: #001616;
+  /* used on calc-btn */
+  --color-text: #53de54;
+  --color-hover: #0f2731;
+
+  --screen-gradient: linear-gradient(to bottom, #1fa422, #83e57e);
+
+  /* Used on calc btns */
+  --shadow-dark-sm: 2px 2px 2px 0 rgba(0, 0, 0, 0.25);
+  --highlight-main-sm: -2px -2px 2px 0 rgb(81, 213, 82);
+  /* Used on calc screen */
+  --highlight-dark-sm: -2px -2px 2px 0 rgba(0, 0, 0, 0.25);
+
+  /* Used on calc body */
+  --highlight-dark-md: -8px -8px 10px 0 rgba(0, 0, 0, 0.3);
+  --shadow-main-md: 4px 4px 20px 0 rgba(10, 142, 12, 0.493);
+
+  --vid-opacity: 0.96;
+
   --font-calc: 'Teko', sans-serif;
 }
 
@@ -58,7 +83,7 @@ main {
   height: 100%;
   width: 100%;
   z-index: -1;
-  opacity: 0.8;
+  opacity: var(--vid-opacity);
   overflow: hidden;
 }
 
