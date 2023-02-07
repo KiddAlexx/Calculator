@@ -73,6 +73,30 @@ main {
 header {
   background-color: rgba(0, 22, 22, 0.9);
   height: 8rem;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 10rem;
+  padding-right: 10rem;
+  gap: 5rem;
+}
+
+.btn-header {
+  border: none;
+  background: none;
+  color: white;
+  font-family: var(--font-calc);
+  font-weight: 300;
+  font-size: 3rem;
+  letter-spacing: 0.4rem;
+}
+.header-left {
+  display: flex;
+  gap: 5rem;
+  font-family: 'digital-7regular';
+}
+.header-right {
+  display: flex;
+  gap: 5rem;
 }
 
 /************************ Calculator Style ************************/
@@ -160,7 +184,8 @@ footer {
   font-family: var(--font-calc);
   font-weight: 300;
   color: white;
-
+  /*   padding-left: 6rem;
+  padding-right: 6rem; */
   background-color: rgba(0, 22, 22, 0.9);
   height: 8rem;
   font-size: 3rem;
@@ -179,7 +204,7 @@ footer {
 }
 
 .icon-github:hover {
-  transform: scale(1.2);
+  transform: scale(1.1);
 }
 .icon-github:active {
   transform: scale(0.9);
