@@ -105,7 +105,7 @@ main {
   left: 0;
   height: 100%;
   width: 100%;
-  z-index: -1;
+  z-index: -10;
   opacity: var(--vid-opacity);
   overflow: hidden;
 }
@@ -122,7 +122,7 @@ header {
   background-color: rgba(0, 22, 22, 0.9);
   height: 8rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   padding-left: 10rem;
   padding-right: 10rem;
   gap: 5rem;
@@ -144,21 +144,17 @@ header {
 .btn-theme:active {
   transform: scale(0.9);
 }
-.header-left {
-  display: flex;
-  gap: 5rem;
-  font-family: 'digital-7regular';
-}
-.header-right {
-  display: flex;
-  gap: 5rem;
-}
 
 /************************ Calculator Style ************************/
 
+.calculator-app {
+  position: relative;
+}
+
 .calculator-body {
   font-family: var(--font-calc);
-
+  position: relative;
+  z-index: 2;
   display: grid;
   gap: 1rem;
   grid-template-columns: repeat(4, 1fr);
@@ -168,7 +164,7 @@ header {
   width: 35.2rem;
   height: 46.2rem;
 
-  opacity: 0.95;
+  /*   opacity: 0.95; */
   padding: 1.6rem;
   background-color: var(--color-black);
   border-radius: 2%;
@@ -227,6 +223,38 @@ header {
   box-shadow: inset var(--shadow-dark-sm), inset var(--highlight-main-sm);
   transform: translate(+1.5px, +1.5px);
   background-color: var(--color-black);
+}
+
+/************************ Panel Style ************************/
+
+.calc-panel {
+  width: 20rem;
+  height: 46.2rem;
+  background-color: var(--color-black);
+  opacity: 0.95;
+}
+
+.calc-panel-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  position: absolute;
+  left: -6px;
+  z-index: 1;
+  transition: transform 2s;
+}
+
+.btn-panel-left {
+  z-index: 3;
+  height: 30px;
+  width: 30px;
+  position: absolute;
+  left: -10px;
+  top: 50%;
+}
+
+.calc-panel-left:hover {
+  transform: translateX(-188px);
 }
 
 /************************ Footer Style ************************/
