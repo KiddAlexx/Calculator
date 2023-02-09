@@ -3,6 +3,7 @@
 .theme-neon-city {
   /* used in header + footer + calc */
   --color-black: #001616;
+  --color-black-opacity: rgba(0, 22, 22, 0.8);
   /* used on calc-btn */
   --color-text: #d720b2;
   --color-hover: #0f2731;
@@ -26,6 +27,7 @@
 .theme-matrix {
   /* used in header + footer + calc */
   --color-black: #001616;
+  --color-black-opacity: rgba(0, 22, 22, 0.8);
   /* used on calc-btn */
   --color-text: #53de54;
   --color-hover: #0f2731;
@@ -49,6 +51,7 @@
 .theme-hollow-knight {
   /* used in header + footer + calc */
   --color-black: #001616;
+  --color-black-opacity: rgba(0, 22, 22, 0.8);
   /* used on calc-btn */
   --color-text: #65b5a1;
   --color-hover: #0f2731;
@@ -153,6 +156,7 @@ header {
 
 .calculator-body {
   font-family: var(--font-calc);
+
   position: relative;
   z-index: 2;
   display: grid;
@@ -164,7 +168,7 @@ header {
   width: 35.2rem;
   height: 46.2rem;
 
-  /*   opacity: 0.95; */
+  /*   opacity: 0; */
   padding: 1.6rem;
   background-color: var(--color-black);
   border-radius: 2%;
@@ -229,9 +233,8 @@ header {
 
 .calc-panel {
   width: 20rem;
-  height: 46.2rem;
-  background-color: var(--color-black);
-  opacity: 0.95;
+  height: 43rem;
+  background-color: var(--color-black-opacity);
 }
 
 .calc-panel-left {
@@ -239,23 +242,19 @@ header {
   flex-direction: column;
   justify-content: space-around;
   position: absolute;
-  left: -6px;
+
+  border-radius: 2% 0 0 2%;
+  box-shadow: inset 0px 0px 0px 10px var(--color-black);
+
+  left: 0px;
+  top: 16px;
   z-index: 1;
-  transition: transform 2s;
+  transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1);
 }
 
-.btn-panel-left {
-  z-index: 3;
-  height: 30px;
-  width: 30px;
-  position: absolute;
-  left: -10px;
-  top: 50%;
-}
-
-.calc-panel-left:hover {
-  transform: translateX(-188px);
-}
+/* .calc-panel-left:active {
+  transform: translateX(-180px);
+} */
 
 /************************ Footer Style ************************/
 
