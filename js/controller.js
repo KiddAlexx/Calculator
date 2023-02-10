@@ -9,6 +9,11 @@ const bgVideo = document.querySelector('.bg-video-content');
 const screenLower = document.querySelector('.screen-lower');
 const screenUpper = document.querySelector('.screen-upper');
 
+const toggleThemes = document.querySelector('.toggle-themes');
+const toggleHistory = document.querySelector('.toggle-history');
+const calcPanelLeft = document.querySelector('.calc-panel-left');
+const calcPanelRight = document.querySelector('.calc-panel-right');
+
 // Data to use for cheking input type.
 const numberValues = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
 const operatorValues = ['+', '-', 'x', '/'];
@@ -66,6 +71,21 @@ const updateScreen = function () {
   } else {
     screenUpper.innerText = '';
   }
+};
+
+// Function to animate side panels of calculator
+
+const animatePanels = function () {
+  toggleThemes.addEventListener('change', e => {
+    if (toggleThemes.checked === true) {
+      calcPanelLeft.classList.add('calc-panel-left-active');
+    } else {
+      calcPanelLeft.classList.remove('calc-panel-left-active');
+    }
+
+    console.log(toggleHistory.checked);
+    console.log(toggleThemes.checked);
+  });
 };
 
 // Function to switch between themes
@@ -361,3 +381,4 @@ collectInputsClick();
 collectInputsKey();
 animateKeys();
 switchThemes();
+animatePanels();

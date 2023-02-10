@@ -217,8 +217,8 @@ header {
 input[type='checkbox'].toggle {
   opacity: 0;
   position: absolute;
-  left: -9000px;
-  top: -9000px;
+  left: -101vw;
+  /* top: -9000px; */
 }
 input[type='checkbox'].toggle + label {
   color: #4e7ace;
@@ -235,15 +235,16 @@ input[type='checkbox'].toggle + label::before {
   content: '';
   width: 2em;
   height: 0.8em;
-  background-color: #4edaf7;
+  background-color: #4e7ace;
   margin-right: 0.5em;
+  transition: all 0.2s ease-in-out;
 }
 input[type='checkbox'].toggle + label::after {
   position: absolute;
   content: '';
   width: 1em;
   height: 0.8em;
-  background-color: #ff08e672;
+  background-color: rgba(215, 32, 178, 0.622);
   transition: all 0.2s ease-in-out;
 }
 input[type='checkbox'].toggle:checked + label::after {
@@ -285,7 +286,7 @@ input[type='checkbox'].toggle:checked + label {
   background-color: var(--color-black);
 }
 
-.active {
+.key-active {
   box-shadow: inset var(--shadow-dark-sm), inset var(--highlight-main-sm);
   transform: translate(+1.5px, +1.5px);
   background-color: var(--color-black);
@@ -322,15 +323,18 @@ input[type='checkbox'].toggle:checked + label {
   border-radius: 0 2% 2% 0;
   box-shadow: inset 0px 0px 0px 10px var(--color-black);
 
-  left: 210px;
+  right: 0px;
   top: 16px;
   z-index: 1;
   transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1);
 }
 
-/* .calc-panel-left:active {
-  transform: translateX(-180px);
-} */
+.calc-panel-left-active {
+  transform: translateX(-190px);
+}
+.calc-panel-right-active {
+  transform: translateX(+190px);
+}
 
 /************************ Footer Style ************************/
 
