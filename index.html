@@ -36,14 +36,47 @@
         </video>
       </div>
       <header>
-        <button class="btn-theme">Calculat000000000r!</button>
+        <h1 class="page-title">Calculat000000000r!</h1>
       </header>
       <main>
         <div class="calculator-app">
           <div class="calc-panel calc-panel-left">
-            <button class="btn-theme">Neon City</button
-            ><button class="btn-theme">Matrix</button
-            ><button class="btn-theme">Hollow Knight</button>
+            <div class="btn-radio-group">
+              <input
+                type="radio"
+                id="neon-city"
+                name="themes"
+                value="neon-city"
+                class="input-theme"
+              />
+              <label for="neon-city" class="label-theme"
+                >Neon City <span class="theme-radio-btn"></span
+              ></label>
+            </div>
+            <div class="btn-radio-group">
+              <input
+                type="radio"
+                id="matrix"
+                name="themes"
+                value="matrix"
+                class="input-theme"
+              />
+              <label for="matrix" class="label-theme"
+                >Matrix <span class="theme-radio-btn"></span
+              ></label>
+            </div>
+            <div class="btn-radio-group">
+              <input
+                type="radio"
+                id="hollow-knight"
+                name="themes"
+                value="hollow-knight"
+                class="input-theme"
+              />
+              <label for="hollow-knight" class="label-theme"
+                >Hollow Knight<span class="theme-radio-btn"></span
+              ></label>
+            </div>
           </div>
           <div class="calculator-body">
             <div class="calculator-screen">
@@ -56,13 +89,13 @@
                 id="themes"
                 class="toggle toggle-themes"
                 checked="false"
-              /><label class="label-themes" for="themes">Themes</label>
+              /><label class="label-calc-switch" for="themes">Themes</label>
               <input
                 type="checkbox"
                 id="history"
                 class="toggle toggle-history"
                 checked="false"
-              /><label class="label-history" for="history">History</label>
+              /><label class="label-calc-switch" for="history">History</label>
             </div>
 
             <button class="btn-calc">CL</button>

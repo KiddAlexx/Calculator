@@ -2,7 +2,7 @@
 
 // Store UI elements.
 const buttons = document.querySelectorAll('.btn-calc');
-const btnTheme = document.querySelectorAll('.btn-theme');
+const btnTheme = document.querySelectorAll('.input-theme');
 const bodyEl = document.querySelector('body');
 const bgVideoSource = document.querySelector('.bg-video-content source');
 const bgVideo = document.querySelector('.bg-video-content');
@@ -97,10 +97,10 @@ const animatePanels = function () {
 const switchThemes = function () {
   btnTheme.forEach(button => {
     button.addEventListener('click', e => {
-      const btnContent = e.target.innerText;
+      const btnContent = e.target.id;
 
       if (
-        btnContent === 'Neon City' &&
+        btnContent === 'neon-city' &&
         !bodyEl.classList.contains('theme-neon-city')
       ) {
         bodyEl.className = '';
@@ -110,7 +110,7 @@ const switchThemes = function () {
       }
 
       if (
-        btnContent === 'Matrix' &&
+        btnContent === 'matrix' &&
         !bodyEl.classList.contains('theme-matrix')
       ) {
         bodyEl.className = '';
@@ -119,7 +119,7 @@ const switchThemes = function () {
         bgVideo.load();
       }
       if (
-        btnContent === 'Hollow Knight' &&
+        btnContent === 'hollow-knight' &&
         !bodyEl.classList.contains('theme-hollow-knight')
       ) {
         bodyEl.className = '';
