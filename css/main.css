@@ -154,6 +154,7 @@ header {
 
 .calculator-app {
   position: relative;
+  box-shadow: var(--shadow-main-md), var(--highlight-dark-md);
 }
 
 .calculator-body {
@@ -175,7 +176,6 @@ header {
   padding: 1.6rem;
   background-color: var(--color-black);
   border-radius: 2%;
-  box-shadow: var(--shadow-main-md), var(--highlight-dark-md);
 }
 
 /**********************Calculator Screen**********************/
@@ -304,7 +304,7 @@ input[type='checkbox'].toggle:checked + label {
 /****************************Themes-Left Panel********************************/
 .calc-panel-left {
   display: grid;
-  grid-template-rows: repeat(4, 1fr);
+  grid-template-rows: repeat(6, 1fr);
   align-items: center;
   justify-items: center;
   position: absolute;
