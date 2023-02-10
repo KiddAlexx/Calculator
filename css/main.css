@@ -295,7 +295,7 @@ input[type='checkbox'].toggle:checked + label {
 /************************ Calculator Panels ************************/
 
 .calc-panel {
-  width: 20rem;
+  width: 25rem;
   height: 43rem;
   background-color: var(--color-black-opacity);
 }
@@ -330,10 +330,10 @@ input[type='checkbox'].toggle:checked + label {
 }
 
 .calc-panel-left-active {
-  transform: translateX(-190px);
+  transform: translateX(-240px);
 }
 .calc-panel-right-active {
-  transform: translateX(+190px);
+  transform: translateX(240px);
 }
 
 /************************ Footer Style ************************/

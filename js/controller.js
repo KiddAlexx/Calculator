@@ -82,9 +82,13 @@ const animatePanels = function () {
     } else {
       calcPanelLeft.classList.remove('calc-panel-left-active');
     }
-
-    console.log(toggleHistory.checked);
-    console.log(toggleThemes.checked);
+  });
+  toggleHistory.addEventListener('change', e => {
+    if (toggleHistory.checked === true) {
+      calcPanelRight.classList.add('calc-panel-right-active');
+    } else {
+      calcPanelRight.classList.remove('calc-panel-right-active');
+    }
   });
 };
 
