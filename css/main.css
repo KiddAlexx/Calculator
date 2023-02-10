@@ -301,6 +301,7 @@ input[type='checkbox'].toggle:checked + label {
   background-color: var(--color-black-opacity);
 }
 
+/****************************Themes-Left Panel********************************/
 .calc-panel-left {
   display: grid;
   grid-template-rows: repeat(4, 1fr);
@@ -316,6 +317,12 @@ input[type='checkbox'].toggle:checked + label {
   z-index: 1;
   transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1);
 }
+
+.calc-panel-left-active {
+  transform: translateX(-240px);
+}
+
+/************************Theme Selectors-Radio Buttons*************************/
 
 .btn-radio-group {
   /*   display: flex;
@@ -333,6 +340,7 @@ input[type='checkbox'].toggle:checked + label {
 .label-theme {
   position: relative;
   font-size: 3.5rem;
+  cursor: pointer;
   color: white; /* Temp Color******************************* */
 }
 
@@ -367,6 +375,8 @@ input[type='checkbox'].toggle:checked + label {
   opacity: 1;
 }
 
+/****************************History-Right Panel********************************/
+
 .calc-panel-right {
   display: flex;
   flex-direction: column;
@@ -382,9 +392,6 @@ input[type='checkbox'].toggle:checked + label {
   transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1);
 }
 
-.calc-panel-left-active {
-  transform: translateX(-240px);
-}
 .calc-panel-right-active {
   transform: translateX(240px);
 }
