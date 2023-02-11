@@ -5,7 +5,8 @@
   --color-black: #001616;
   --color-black-opacity: rgba(0, 22, 22, 0.8);
   /* used on calc-btn */
-  --color-text: #d720b2;
+  --color-main: #d720b2;
+  --color-main-light: #fbe9f7;
   --color-hover: #0f2731;
 
   --screen-gradient: linear-gradient(to bottom, #4e7ace, #4edaf7);
@@ -29,7 +30,8 @@
   --color-black: #001616;
   --color-black-opacity: rgba(0, 22, 22, 0.8);
   /* used on calc-btn */
-  --color-text: #53de54;
+  --color-main: #53de54;
+  --color-main-light: #ddf8dd;
   --color-hover: #0f2731;
 
   --screen-gradient: linear-gradient(to bottom, #1fa422, #83e57e);
@@ -53,7 +55,8 @@
   --color-black: #001616;
   --color-black-opacity: rgba(0, 22, 22, 0.8);
   /* used on calc-btn */
-  --color-text: #65b5a1;
+  --color-main: #65b5a1;
+  --color-main-light: #e0f0ec;
   --color-hover: #0f2731;
 
   --screen-gradient: linear-gradient(to bottom, #3e5286, #699aa8);
@@ -251,7 +254,7 @@ input[type='checkbox'].toggle + label::after {
 input[type='checkbox'].toggle:checked + label::after {
   transform: translateX(100%);
 
-  background-color: var(--color-text);
+  background-color: var(--color-main);
 }
 
 input[type='checkbox'].toggle:checked + label::before {
@@ -270,7 +273,7 @@ input[type='checkbox'].toggle:checked + label {
 .btn-calc {
   font-family: inherit;
   background-color: var(--color-black);
-  color: var(--color-text);
+  color: var(--color-main);
   border: 0;
   border-radius: 5%;
   font-size: 2.6rem;
@@ -304,9 +307,11 @@ input[type='checkbox'].toggle:checked + label {
 /****************************Themes-Left Panel********************************/
 .calc-panel-left {
   display: grid;
-  grid-template-rows: repeat(6, 1fr);
+  grid-template-rows: repeat(4, 1fr);
   align-items: center;
   justify-items: center;
+  padding-right: 1.6rem;
+
   position: absolute;
 
   border-radius: 2% 0 0 2%;
@@ -329,10 +334,11 @@ input[type='checkbox'].toggle:checked + label {
   align-items: start;
   justify-content: start; */
   font-family: var(--font-calc);
+  display: flex;
+  /*  padding-right: 8rem; */
 }
 
 .input-theme {
-  opacity: 0;
   position: absolute;
   left: -101vw;
 }
@@ -340,8 +346,12 @@ input[type='checkbox'].toggle:checked + label {
 .label-theme {
   position: relative;
   font-size: 3.5rem;
+  font-weight: 100;
+  letter-spacing: 0.1rem;
   cursor: pointer;
-  color: white; /* Temp Color******************************* */
+  color: var(
+    --color-main-light
+  ); /* Temp Color******************************* */
 }
 
 .theme-radio-btn {
@@ -349,7 +359,7 @@ input[type='checkbox'].toggle:checked + label {
   display: inline-block;
   width: 2rem;
   height: 2rem;
-  border: 2px solid white;
+  border: 2px solid var(--color-main-light);
   top: 0.4em;
   margin-left: 0.4em;
 }
@@ -363,16 +373,37 @@ input[type='checkbox'].toggle:checked + label {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: var(--color-text);
+  background-color: var(--color-main);
   opacity: 0;
   transition: opacity 0.2s;
 }
 
 .input-theme:checked ~ .label-theme {
-  color: var(--color-text);
+  /*   color: var(--color-main); */
 }
 .input-theme:checked ~ .label-theme .theme-radio-btn::after {
   opacity: 1;
+}
+
+.btn-audio {
+  border: none;
+  background: none;
+}
+
+.audio-control {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: end;
+
+  gap: 7rem;
+  padding-right: 4rem;
+}
+
+.audio-icon {
+  height: 3.2rem;
+  height: 3.2rem;
+  fill: var(--color-main-light);
 }
 
 /****************************History-Right Panel********************************/
@@ -420,7 +451,7 @@ footer {
   align-items: center;
 }
 .icon-github {
-  fill: var(--color-text);
+  fill: var(--color-main);
   height: 5rem;
   transition: all 0.2s;
 }
