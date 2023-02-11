@@ -413,27 +413,35 @@ input[type='checkbox'].toggle:checked + label {
   text-align: end;
   border-radius: 0 2% 2% 0;
   box-shadow: inset 0px 0px 0px 10px var(--color-black);
-
+  padding: 0.9rem;
   right: 0px;
   top: 16px;
   z-index: 1;
   transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1);
+  overflow-y: scroll;
 }
 
 .history-container {
+  font-family: var(--font-calc);
   color: white;
-  height: 4rem;
-  margin-right: 3rem;
-  margin-top: 3rem;
+  height: 7.5rem;
+  padding-right: 1rem;
+
+  margin-top: 1.6rem;
+}
+
+.history-container:hover {
+  background-color: #0000009a;
 }
 
 .history-equation {
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
+  font-size: 2rem;
+  margin-bottom: 0.2rem;
 }
 
 .history-result {
-  font-size: 2.5rem;
+  font-size: 3.2rem;
+  letter-spacing: 0.1rem;
 }
 
 .calc-panel-right-active {
