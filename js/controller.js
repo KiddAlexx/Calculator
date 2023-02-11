@@ -265,7 +265,7 @@ const animateKeys = function () {
 
     buttons.forEach(function (btn) {
       if (btn.innerText === btnValue) {
-        btn.classList.add('active');
+        btn.classList.add('key-active');
       }
     });
   });
@@ -274,7 +274,7 @@ const animateKeys = function () {
     const btnValue = assignDataValues(e.key);
     buttons.forEach(function (btn) {
       if (btn.innerText === btnValue) {
-        btn.classList.remove('active');
+        btn.classList.remove('key-active');
       }
     });
   });
