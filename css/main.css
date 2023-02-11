@@ -409,6 +409,7 @@ input[type='checkbox'].toggle:checked + label {
 /****************************History-Right Panel********************************/
 
 .calc-panel-right {
+  width: 26rem;
   position: absolute;
   text-align: end;
   border-radius: 0 2% 2% 0;
@@ -426,7 +427,7 @@ input[type='checkbox'].toggle:checked + label {
   color: white;
   height: 7.5rem;
   padding-right: 1rem;
-
+  font-weight: 100;
   margin-top: 1.6rem;
 }
 
@@ -436,16 +437,19 @@ input[type='checkbox'].toggle:checked + label {
 
 .history-equation {
   font-size: 2rem;
-  margin-bottom: 0.2rem;
+  letter-spacing: 1px;
+
+  /*  margin-bottom: 0.2rem; */
 }
 
 .history-result {
   font-size: 3.2rem;
+
   letter-spacing: 0.1rem;
 }
 
 .calc-panel-right-active {
-  transform: translateX(240px);
+  transform: translateX(250px);
 }
 
 /************************ Footer Style ************************/
