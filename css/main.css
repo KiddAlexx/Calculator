@@ -414,11 +414,16 @@ input[type='checkbox'].toggle:checked + label {
   text-align: end;
   border-radius: 0 2% 2% 0;
   box-shadow: inset 0px 0px 0px 10px var(--color-black);
-  padding: 0.9rem;
+  /*  padding: 0.9rem; */
   right: 0px;
   top: 16px;
   z-index: 1;
   transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.calc-panel-right-container {
+  margin-top: 1rem;
+  height: 41rem;
   overflow-y: scroll;
 }
 
@@ -432,7 +437,8 @@ input[type='checkbox'].toggle:checked + label {
 }
 
 .history-container:hover {
-  background-color: #0000009a;
+  background-color: #00000067;
+  cursor: pointer;
 }
 
 .history-equation {
