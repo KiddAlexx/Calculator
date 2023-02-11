@@ -409,11 +409,8 @@ input[type='checkbox'].toggle:checked + label {
 /****************************History-Right Panel********************************/
 
 .calc-panel-right {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
   position: absolute;
-
+  text-align: end;
   border-radius: 0 2% 2% 0;
   box-shadow: inset 0px 0px 0px 10px var(--color-black);
 
@@ -421,6 +418,22 @@ input[type='checkbox'].toggle:checked + label {
   top: 16px;
   z-index: 1;
   transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.history-container {
+  color: white;
+  height: 4rem;
+  margin-right: 3rem;
+  margin-top: 3rem;
+}
+
+.history-equation {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.history-result {
+  font-size: 2.5rem;
 }
 
 .calc-panel-right-active {
