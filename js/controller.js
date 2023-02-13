@@ -113,6 +113,8 @@ const displayHistoryScreen = function () {
 
       const calc = calcHistory[id];
 
+      resetObjectValues(calcData);
+
       // Re-assign selected calculation data to calcData object.
       calcData.numberOne = calc.num1;
       calcData.numberTwo = calc.num2;
