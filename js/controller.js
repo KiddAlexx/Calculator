@@ -1,7 +1,7 @@
 'use strict';
 
 // Store UI elements.
-const buttons = document.querySelectorAll('.btn-calc');
+const btnCalc = document.querySelectorAll('.btn-calc');
 const btnTheme = document.querySelectorAll('.input-theme');
 const bodyEl = document.querySelector('body');
 const bgVideoSource = document.querySelector('.bg-video-content source');
@@ -281,7 +281,7 @@ const assignDataValues = function (content) {
 
 // Handle button clicks, update calculation data and display results on screen.
 const collectInputsClick = function () {
-  buttons.forEach(button => {
+  btnCalc.forEach(button => {
     button.addEventListener('click', e => {
       const btnContent = e.target.innerText;
 
@@ -330,7 +330,7 @@ const animateKeys = function () {
   document.addEventListener('keydown', function (e) {
     const btnValue = assignDataValues(e.key);
 
-    buttons.forEach(function (btn) {
+    btnCalc.forEach(function (btn) {
       if (btn.innerText === btnValue) {
         btn.classList.add('key-active');
       }
@@ -339,7 +339,7 @@ const animateKeys = function () {
 
   document.addEventListener('keyup', function (e) {
     const btnValue = assignDataValues(e.key);
-    buttons.forEach(function (btn) {
+    btnCalc.forEach(function (btn) {
       if (btn.innerText === btnValue) {
         btn.classList.remove('key-active');
       }
