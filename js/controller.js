@@ -32,6 +32,8 @@ const calcData = {
   result: '',
 };
 
+const calcHistory = [];
+
 //////////////////////////////////////////////////
 ///////////// VIEW
 ////////////
@@ -160,6 +162,15 @@ const calculateResult = function (numOne, numTwo) {
   sum.toString().length > 11
     ? (calcData.result = sum.toExponential(6))
     : (calcData.result = sum);
+
+  calcHistory.push({
+    num1: calcData.numberOne,
+    num2: calcData.numberTwo,
+    operator: calcData.operator,
+    result: calcData.result,
+  });
+
+  console.log(calcHistory);
 };
 
 // Takes an input and assigns it a type and a value.
