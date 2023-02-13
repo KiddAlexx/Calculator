@@ -83,15 +83,43 @@ const updateScreen = function () {
 // Function which takes the last item in calcHistory array,
 // then pushes this data into the DOM to be displayed in the history panel.
 
-const displayHistory = function () {
+const displayHistoryPanel = function () {
   const calc = calcHistory[calcHistory.length - 1];
 
-  const historyHTML = `<div class="history-container history-${calcHistory.length}">
-                <div class="history-equation">${calc.num1} ${calc.operator} ${calc.num2} =</div>
-                <div class="history-result">${calc.result}</div>
-              </div>`;
+  const historyHTML = `<div class="history-container" history-position="${
+    calcHistory.length - 1
+  }"> <div class="history-equation">${calc.num1} ${calc.operator} ${
+    calc.num2
+  } =</div>
+        <div class="history-result">${calc.result}</div>
+                       </div>`;
 
   calcPanelRightContainer.insertAdjacentHTML('beforeend', historyHTML);
+};
+
+// Listen for click on history panel
+// then re-display selected calculation on screen
+
+const displayHistoryScreen = function () {
+  calcPanelRightContainer.addEventListener('click', e => {
+    e.preventDefault();
+    const historyContainer = e.target.closest('.history-container');
+
+    if (historyContainer) {
+      const id = historyContainer.getAttribute('history-position');
+      console.log(id);
+      console.log(e);
+
+      const calc = calcHistory[id];
+
+      calcData.numberOne = calc.num1;
+      calcData.numberTwo = calc.num2;
+      calcData.operator = calc.operator;
+      calcData.result = calc.result;
+
+      console.log(calcData);
+    }
+  });
 };
 
 // Function to animate side panels of calculator
@@ -189,7 +217,7 @@ const calculateResult = function (numOne, numTwo) {
     result: calcData.result,
   });
 
-  displayHistory();
+  displayHistoryPanel();
 };
 
 // Takes an input and assigns it a type and a value.
@@ -418,3 +446,4 @@ collectInputsKey();
 animateKeys();
 switchThemes();
 animatePanels();
+displayHistoryScreen();
