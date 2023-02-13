@@ -14,6 +14,10 @@ const toggleHistory = document.querySelector('.toggle-history');
 const calcPanelLeft = document.querySelector('.calc-panel-left');
 const calcPanelRight = document.querySelector('.calc-panel-right');
 
+const calcPanelRightContainer = document.querySelector(
+  '.calc-panel-right-container'
+);
+
 // Data to use for cheking input type.
 const numberValues = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
 const operatorValues = ['+', '-', 'x', '/'];
@@ -73,6 +77,20 @@ const updateScreen = function () {
   } else {
     screenUpper.innerText = '';
   }
+};
+
+// Function which takes the last item in calcHistory array,
+// then pushes this data into the DOM to be displayed in the history panel.
+
+const displayHistory = function () {
+  const calc = calcHistory[calcHistory.length - 1];
+
+  const historyHTML = `<div class="history-container">
+                <div class="history-equation">${calc.num1} ${calc.operator} ${calc.num2} =</div>
+                <div class="history-result">${calc.result}</div>
+              </div>`;
+
+  calcPanelRightContainer.insertAdjacentHTML('beforeend', historyHTML);
 };
 
 // Function to animate side panels of calculator
@@ -170,7 +188,7 @@ const calculateResult = function (numOne, numTwo) {
     result: calcData.result,
   });
 
-  console.log(calcHistory);
+  displayHistory();
 };
 
 // Takes an input and assigns it a type and a value.
@@ -234,6 +252,7 @@ const collectInputsClick = function () {
       assignDataValues(btnContent);
       calculatorLogic();
       updateScreen();
+
       console.log(calcData.curValue);
       console.log(calcData.curType);
       console.log(calcData.prevValue);
@@ -257,6 +276,7 @@ const collectInputsKey = function () {
     assignDataValues(btnContent);
     calculatorLogic();
     updateScreen();
+
     console.log(calcData.curValue);
     console.log(calcData.curType);
     console.log(calcData.prevValue);
