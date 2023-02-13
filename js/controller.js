@@ -36,6 +36,7 @@ const calcData = {
   result: '',
 };
 
+// Array to store each completed calculation as an object.
 const calcHistory = [];
 
 //////////////////////////////////////////////////
@@ -86,7 +87,7 @@ const displayHistory = function () {
   const calc = calcHistory[calcHistory.length - 1];
 
   const historyHTML = `<div class="history-container">
-                <div class="history-equation">${calc.num1} ${calc.operator} ${calc.num2} =</div>
+                <div class="history-equation"><span class ="history-num1">${calc.num1}</span> <span class ="history-operator">${calc.operator}</span> <span class ="history-num2">${calc.num2}</span> =</div>
                 <div class="history-result">${calc.result}</div>
               </div>`;
 
