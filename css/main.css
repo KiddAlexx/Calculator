@@ -436,6 +436,7 @@ input[type='checkbox'].toggle:checked + label {
   font-weight: 100;
   margin-top: 1.6rem;
   user-select: none;
+  position: relative;
 }
 
 .history-container:hover {
@@ -454,6 +455,20 @@ input[type='checkbox'].toggle:checked + label {
   font-size: 3.2rem;
 
   letter-spacing: 0.1rem;
+}
+
+.btn-history-delete {
+  border: none;
+  background: none;
+  position: absolute;
+  z-index: 10;
+  left: 20px;
+  bottom: 15px;
+}
+
+.icon-history-delete {
+  height: 4rem;
+  fill: white;
 }
 
 .calc-panel-right-active {
