@@ -103,6 +103,7 @@ const displayHistoryPanel = function () {
 const displayHistoryScreen = function () {
   calcPanelRightContainer.addEventListener('click', e => {
     e.preventDefault();
+
     const historyContainer = e.target.closest('.history-container');
 
     if (historyContainer) {
@@ -112,11 +113,15 @@ const displayHistoryScreen = function () {
 
       const calc = calcHistory[id];
 
+      // Re-assign selected calculation data to calcData object.
       calcData.numberOne = calc.num1;
       calcData.numberTwo = calc.num2;
       calcData.operator = calc.operator;
       calcData.result = calc.result;
 
+      // This ensures that updateScreen() works to display the selected calculation on screen, treating a click of a previous calculation in the same way as selecting the = sign.
+      assignDataValues('=');
+      updateScreen();
       console.log(calcData);
     }
   });
