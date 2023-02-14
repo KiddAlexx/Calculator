@@ -352,9 +352,7 @@ input[type='checkbox'].toggle:checked + label {
   letter-spacing: 0.1rem;
   cursor: pointer;
   user-select: none;
-  color: var(
-    --color-main-light
-  ); /* Temp Color******************************* */
+  color: var(--color-main-light); /* temp */
 }
 
 .theme-radio-btn {
@@ -365,6 +363,7 @@ input[type='checkbox'].toggle:checked + label {
   border: 2px solid var(--color-main-light);
   top: 0.4em;
   margin-left: 0.4em;
+  box-shadow: inset 2px 2px 4px 0px rgba(37, 37, 37, 0.75);
 }
 
 .theme-radio-btn::after {
@@ -377,6 +376,7 @@ input[type='checkbox'].toggle:checked + label {
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: var(--color-main);
+  box-shadow: inset 2px 2px 2px 0px rgba(0, 0, 0, 0.75);
   opacity: 0;
   transition: opacity 0.2s;
 }
