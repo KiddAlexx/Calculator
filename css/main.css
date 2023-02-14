@@ -363,7 +363,7 @@ input[type='checkbox'].toggle:checked + label {
   border: 2px solid var(--color-main-light);
   top: 0.4em;
   margin-left: 0.4em;
-  box-shadow: inset 2px 2px 4px 0px rgba(37, 37, 37, 0.75);
+  /*  box-shadow: inset 2px 2px 4px 0px rgba(37, 37, 37, 0.75); */
 }
 
 .theme-radio-btn::after {
@@ -432,7 +432,7 @@ input[type='checkbox'].toggle:checked + label {
 
 .history-container {
   font-family: var(--font-calc);
-  color: white;
+  color: var(--color-main-light);
   height: 7.5rem;
   padding-right: 1rem;
   font-weight: 100;
@@ -466,11 +466,19 @@ input[type='checkbox'].toggle:checked + label {
   z-index: 10;
   left: 28px;
   bottom: 30px;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+.btn-history-delete:hover {
+  transform: scale(1.1) rotate(20deg);
+}
+.btn-history-delete:active {
+  transform: scale(0.9) rotate(180deg);
 }
 
 .icon-history-delete {
   height: 4rem;
-  fill: white;
+  fill: var(--color-main-light);
 }
 
 .calc-panel-right-active {
