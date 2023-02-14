@@ -254,6 +254,7 @@ input[type='checkbox'].toggle + label::after {
   content: '';
   width: 1em;
   height: 0.8em;
+  border-radius: 10%;
   background-color: var(--color-main-opacity);
   box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.75);
   transition: transform 0.4s ease-in-out;
@@ -361,6 +362,7 @@ input[type='checkbox'].toggle:checked + label {
   width: 2rem;
   height: 2rem;
   border: 2px solid var(--color-main-light);
+  border-radius: 20%;
   top: 0.4em;
   margin-left: 0.4em;
   /*  box-shadow: inset 2px 2px 4px 0px rgba(37, 37, 37, 0.75); */
