@@ -17,6 +17,7 @@ const calcPanelRight = document.querySelector('.calc-panel-right');
 const calcPanelRightContainer = document.querySelector(
   '.calc-panel-right-container'
 );
+const btnHistoryDelete = document.querySelector('.btn-history-delete');
 
 // Data to use for cheking input type.
 const numberValues = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
@@ -37,7 +38,7 @@ const calcData = {
 };
 
 // Array to store each completed calculation as an object.
-const calcHistory = [];
+let calcHistory = [];
 
 //////////////////////////////////////////////////
 ///////////// VIEW
@@ -126,6 +127,16 @@ const displayHistoryScreen = function () {
       updateScreen();
       console.log(calcData);
     }
+  });
+};
+
+// Function to clear history panel
+
+const clearHistory = function () {
+  btnHistoryDelete.addEventListener('click', e => {
+    calcHistory = [];
+    calcPanelRightContainer.innerHTML = '';
+    console.log(e);
   });
 };
 
@@ -454,3 +465,4 @@ animateKeys();
 switchThemes();
 animatePanels();
 displayHistoryScreen();
+clearHistory();
