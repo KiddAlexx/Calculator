@@ -404,8 +404,8 @@ input[type='checkbox'].toggle:checked + label {
 }
 
 .audio-icon {
-  height: 3.2rem;
-  height: 3.2rem;
+  height: 3.8rem;
+  height: 3.8rem;
   fill: var(--color-main-light);
 }
 
