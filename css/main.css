@@ -226,8 +226,9 @@ input[type='checkbox'].toggle {
   position: absolute;
   left: -101vw;
 }
+/* Switch Label */
 input[type='checkbox'].toggle + label {
-  color: #4e7ace;
+  color: #4ea7e1;
   user-select: none;
   position: relative;
   display: flex;
@@ -237,6 +238,7 @@ input[type='checkbox'].toggle + label {
   transition: all 0.4s ease-in-out;
 }
 
+/* Background of switches */
 input[type='checkbox'].toggle + label::before {
   content: '';
   width: 2em;
@@ -246,6 +248,7 @@ input[type='checkbox'].toggle + label::before {
   margin-right: 0.5em;
   transition: transform 0.4s ease-in-out;
 }
+/* Switches */
 input[type='checkbox'].toggle + label::after {
   position: absolute;
   content: '';
@@ -255,10 +258,9 @@ input[type='checkbox'].toggle + label::after {
   box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.75);
   transition: transform 0.4s ease-in-out;
 }
+/* Switch checked */
 input[type='checkbox'].toggle:checked + label::after {
   transform: translateX(100%);
-
-  background-color: var(--color-main-opacity);
 }
 
 input[type='checkbox'].toggle:checked + label::before {
@@ -462,8 +464,8 @@ input[type='checkbox'].toggle:checked + label {
   background: none;
   position: absolute;
   z-index: 10;
-  left: 20px;
-  bottom: 15px;
+  left: 28px;
+  bottom: 30px;
 }
 
 .icon-history-delete {
