@@ -96,6 +96,13 @@ const displayHistoryPanel = function () {
                        </div>`;
 
   calcPanelRightContainer.insertAdjacentHTML('beforeend', historyHTML);
+
+  if (btnHistoryDelete.classList.contains('btn-history-delete-active')) {
+    btnHistoryDelete.classList.remove('btn-history-delete-active');
+  }
+  if (!btnHistoryDelete.classList.contains('btn-history-hover')) {
+    btnHistoryDelete.classList.add('btn-history-hover');
+  }
 };
 
 // Listen for click on history panel
@@ -125,6 +132,7 @@ const displayHistoryScreen = function () {
       // This ensures that updateScreen() works to display the selected calculation on screen, treating a click of a previous calculation in the same way as selecting the = sign.
       assignDataValues('=');
       updateScreen();
+
       console.log(calcData);
     }
   });
@@ -136,6 +144,9 @@ const clearHistory = function () {
   btnHistoryDelete.addEventListener('click', e => {
     calcHistory = [];
     calcPanelRightContainer.innerHTML = '';
+
+    btnHistoryDelete.classList.remove('btn-history-hover');
+    btnHistoryDelete.classList.add('btn-history-delete-active');
     console.log(e);
   });
 };

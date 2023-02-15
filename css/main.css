@@ -471,10 +471,10 @@ input[type='checkbox'].toggle:checked + label {
   transition: all 0.2s ease-in-out;
   cursor: pointer;
 }
-.btn-history-delete:hover {
+.btn-history-hover:hover {
   transform: scale(1.1) rotate(20deg);
 }
-.btn-history-delete:active {
+.btn-history-delete-active {
   transform: scale(0.9) rotate(180deg);
 }
 
