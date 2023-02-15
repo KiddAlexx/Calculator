@@ -386,6 +386,8 @@ input[type='checkbox'].toggle:checked + label {
   opacity: 1;
 }
 
+/************************Audio Controls*************************/
+
 .btn-audio {
   border: none;
   background: none;
@@ -396,9 +398,10 @@ input[type='checkbox'].toggle:checked + label {
   cursor: pointer;
   transition: all 0.2s ease-in-out;
 }
-/* .btn-audio:hover {
-  transform: scale(1.1);
-} */
+
+.btn-audio-hover:hover {
+  transform: scale(1.2);
+}
 
 .btn-audio-active {
   transform: scale(0.9);

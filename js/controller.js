@@ -235,7 +235,9 @@ const themeAudio = function () {
     ) {
       audioNeonCity.play();
       btnAudioPlay.classList.add('btn-audio-active');
+      btnAudioPlay.classList.remove('btn-audio-hover');
       btnAudioMute.classList.remove('btn-audio-active');
+      btnAudioMute.classList.add('btn-audio-hover');
     }
 
     if (
@@ -245,7 +247,9 @@ const themeAudio = function () {
       audioMatrix.volume = 0.4;
       audioMatrix.play();
       btnAudioPlay.classList.add('btn-audio-active');
+      btnAudioPlay.classList.remove('btn-audio-hover');
       btnAudioMute.classList.remove('btn-audio-active');
+      btnAudioMute.classList.add('btn-audio-hover');
     }
 
     if (
@@ -254,7 +258,9 @@ const themeAudio = function () {
     ) {
       audioHollowKnight.play();
       btnAudioPlay.classList.add('btn-audio-active');
+      btnAudioPlay.classList.remove('btn-audio-hover');
       btnAudioMute.classList.remove('btn-audio-active');
+      btnAudioMute.classList.add('btn-audio-hover');
     }
   });
 
@@ -265,7 +271,9 @@ const themeAudio = function () {
     ) {
       audioNeonCity.pause();
       btnAudioMute.classList.add('btn-audio-active');
+      btnAudioMute.classList.remove('btn-audio-hover');
       btnAudioPlay.classList.remove('btn-audio-active');
+      btnAudioPlay.classList.add('btn-audio-hover');
     }
     if (
       bodyEl.classList.contains('theme-matrix') &&
@@ -273,7 +281,9 @@ const themeAudio = function () {
     ) {
       audioMatrix.pause();
       btnAudioMute.classList.add('btn-audio-active');
+      btnAudioMute.classList.remove('btn-audio-hover');
       btnAudioPlay.classList.remove('btn-audio-active');
+      btnAudioPlay.classList.add('btn-audio-hover');
     }
     if (
       bodyEl.classList.contains('theme-hollow-knight') &&
@@ -281,7 +291,9 @@ const themeAudio = function () {
     ) {
       audioHollowKnight.pause();
       btnAudioMute.classList.add('btn-audio-active');
+      btnAudioMute.classList.remove('btn-audio-hover');
       btnAudioPlay.classList.remove('btn-audio-active');
+      btnAudioPlay.classList.add('btn-audio-hover');
     }
   });
 };
