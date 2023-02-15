@@ -4,6 +4,7 @@
   /* used in header + footer + calc */
   --color-black: #001616;
   --color-black-opacity: rgba(0, 22, 22, 0.8);
+  --color-black-opacity-2: rgba(0, 0, 0, 0.4);
   /* used on calc-btn */
   --color-main: #d720b2;
   --color-main-opacity: rgba(215, 32, 178, 0.8);
@@ -30,6 +31,7 @@
   /* used in header + footer + calc */
   --color-black: #0c0c0c;
   --color-black-opacity: rgba(13, 13, 13, 0.658);
+  --color-black-opacity-2: rgba(0, 0, 0, 0.6);
   /* used on calc-btn */
   --color-main: #53de54;
   --color-main-opacity: rgba(83, 222, 83, 0.8);
@@ -56,6 +58,7 @@
   /* used in header + footer + calc */
   --color-black: #001616;
   --color-black-opacity: rgba(0, 22, 22, 0.8);
+  --color-black-opacity-2: rgba(0, 0, 0, 0.4);
   /* used on calc-btn */
   --color-main: #65b5a1;
   --color-main-opacity: rgba(101, 181, 161, 0.8);
@@ -148,13 +151,6 @@ header {
   font-size: 3rem;
   letter-spacing: 0.4rem;
 }
-/*
-.btn-theme:hover {
-  transform: scale(1.2);
-}
-.btn-theme:active {
-  transform: scale(0.9);
-} */
 
 /************************ Calculator Style ************************/
 
@@ -444,7 +440,7 @@ input[type='checkbox'].toggle:checked + label {
 }
 
 .history-container:hover {
-  background-color: #00000067;
+  background-color: var(--color-black-opacity-2);
   cursor: pointer;
 }
 
