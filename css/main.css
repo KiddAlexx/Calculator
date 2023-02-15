@@ -389,14 +389,21 @@ input[type='checkbox'].toggle:checked + label {
 .btn-audio {
   border: none;
   background: none;
+  height: 6rem;
+  width: 6rem;
+  border-radius: 5%;
+  /* box-shadow: -3px -3px 3px 0px rgba(0, 0, 0, 0.75); */
   cursor: pointer;
+  transition: all 0.2s ease-in-out;
 }
 /* .btn-audio:hover {
   transform: scale(1.1);
 } */
 
 .btn-audio-active {
-  transform: scale(1.5);
+  transform: scale(0.9);
+  /*   background-color: #2466743d; */
+  box-shadow: inset 3px 3px 3px 0px rgba(0, 0, 0, 0.75);
 }
 
 .audio-control {
@@ -405,14 +412,19 @@ input[type='checkbox'].toggle:checked + label {
   display: flex;
   justify-content: end;
 
-  gap: 7rem;
+  gap: 2rem;
   padding-right: 4rem;
 }
 
 .audio-icon {
-  height: 3.8rem;
-  height: 3.8rem;
+  height: 5rem;
+  padding: 0.5rem;
+
   fill: var(--color-main-light);
+}
+
+.audio-icon-active {
+  fill: var(--color-main);
 }
 
 /****************************History-Right Panel********************************/
