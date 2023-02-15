@@ -19,6 +19,13 @@ const calcPanelRightContainer = document.querySelector(
 );
 const btnHistoryDelete = document.querySelector('.btn-history-delete');
 
+const btnAudioMute = document.querySelector('.audio-mute');
+const btnAudioPlay = document.querySelector('.audio-play');
+
+const audioNeonCity = new Audio('../audio/neon-city.mp3');
+const audioMatrix = new Audio('../audio/matrix.mp3');
+const audioHollowKnight = new Audio('../audio/hollow-knight.mp3');
+
 // Data to use for cheking input type.
 const numberValues = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
 const operatorValues = ['+', '-', 'x', '/'];
@@ -208,6 +215,67 @@ const switchThemes = function () {
 
       console.log(btnContent);
     });
+  });
+};
+
+// Function to play and pause audio
+
+const themeAudio = function () {
+  btnAudioPlay.addEventListener('click', e => {
+    if (
+      bodyEl.classList.contains('theme-neon-city') &&
+      !btnAudioPlay.classList.contains('btn-audio-active')
+    ) {
+      audioNeonCity.play();
+      btnAudioPlay.classList.add('btn-audio-active');
+      btnAudioMute.classList.remove('btn-audio-active');
+    }
+
+    if (
+      bodyEl.classList.contains('theme-matrix') &&
+      !btnAudioPlay.classList.contains('btn-audio-active')
+    ) {
+      audioMatrix.volume = 0.4;
+      audioMatrix.play();
+      btnAudioPlay.classList.add('btn-audio-active');
+      btnAudioMute.classList.remove('btn-audio-active');
+    }
+
+    if (
+      bodyEl.classList.contains('theme-hollow-knight') &&
+      !btnAudioPlay.classList.contains('btn-audio-active')
+    ) {
+      audioHollowKnight.play();
+      btnAudioPlay.classList.add('btn-audio-active');
+      btnAudioMute.classList.remove('btn-audio-active');
+    }
+  });
+
+  btnAudioMute.addEventListener('click', e => {
+    if (
+      bodyEl.classList.contains('theme-neon-city') &&
+      !btnAudioMute.classList.contains('btn-audio-active')
+    ) {
+      audioNeonCity.pause();
+      btnAudioMute.classList.add('btn-audio-active');
+      btnAudioPlay.classList.remove('btn-audio-active');
+    }
+    if (
+      bodyEl.classList.contains('theme-matrix') &&
+      !btnAudioMute.classList.contains('btn-audio-active')
+    ) {
+      audioMatrix.pause();
+      btnAudioMute.classList.add('btn-audio-active');
+      btnAudioPlay.classList.remove('btn-audio-active');
+    }
+    if (
+      bodyEl.classList.contains('theme-hollow-knight') &&
+      !btnAudioMute.classList.contains('btn-audio-active')
+    ) {
+      audioHollowKnight.pause();
+      btnAudioMute.classList.add('btn-audio-active');
+      btnAudioPlay.classList.remove('btn-audio-active');
+    }
   });
 };
 
@@ -473,6 +541,7 @@ const calculatorLogic = function () {
 collectInputsClick();
 collectInputsKey();
 animateKeys();
+themeAudio();
 switchThemes();
 animatePanels();
 displayHistoryScreen();

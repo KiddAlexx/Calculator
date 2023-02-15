@@ -389,6 +389,14 @@ input[type='checkbox'].toggle:checked + label {
 .btn-audio {
   border: none;
   background: none;
+  cursor: pointer;
+}
+/* .btn-audio:hover {
+  transform: scale(1.1);
+} */
+
+.btn-audio-active {
+  transform: scale(1.5);
 }
 
 .audio-control {
