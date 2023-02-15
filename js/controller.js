@@ -184,6 +184,13 @@ const switchThemes = function () {
     button.addEventListener('click', e => {
       const btnContent = e.target.id;
 
+      audioNeonCity.pause();
+      audioMatrix.pause();
+      audioHollowKnight.pause();
+
+      btnAudioMute.classList.remove('btn-audio-active');
+      btnAudioPlay.classList.remove('btn-audio-active');
+
       if (
         btnContent === 'neon-city' &&
         !bodyEl.classList.contains('theme-neon-city')
