@@ -28,8 +28,8 @@
 }
 .theme-matrix {
   /* used in header + footer + calc */
-  --color-black: #001616;
-  --color-black-opacity: rgba(0, 22, 22, 0.8);
+  --color-black: #0c0c0c;
+  --color-black-opacity: rgba(13, 13, 13, 0.658);
   /* used on calc-btn */
   --color-main: #53de54;
   --color-main-opacity: rgba(83, 222, 83, 0.8);
