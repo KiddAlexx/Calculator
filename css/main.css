@@ -101,7 +101,7 @@ html {
 }
 body {
   position: relative;
-  /* font-size: 1.06rem; */
+
   font-family: var(--font-calc);
 }
 
