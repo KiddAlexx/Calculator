@@ -30,6 +30,10 @@ const audioHollowKnight = new Audio('../audio/hollow-knight.mp3');
 const numberValues = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
 const operatorValues = ['+', '-', 'x', '/'];
 
+//Data for media queries
+const mediaQueryMedium = window.matchMedia('(max-width: 900px');
+const mediaQuerySmall = window.matchMedia('(max-width: 650px');
+
 // Object to store all calculation data.
 const calcData = {
   activeNumber: [],
