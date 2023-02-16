@@ -297,7 +297,7 @@ input[type='checkbox'].toggle:checked + label {
   background-color: var(--color-black);
 }
 
-/************************ Calculator Panels ************************/
+/********************** Calculator Panels **********************/
 
 .calc-panel {
   width: 25rem;
@@ -305,7 +305,7 @@ input[type='checkbox'].toggle:checked + label {
   background-color: var(--color-black-opacity);
 }
 
-/***********************Themes-Left Panel****************************/
+/**********************Themes-Left Panel**********************/
 .calc-panel-left {
   display: grid;
   grid-template-rows: repeat(4, 1fr);
@@ -328,7 +328,7 @@ input[type='checkbox'].toggle:checked + label {
   transform: translateX(-240px);
 }
 
-/************************Theme Selectors-Radio Buttons*************************/
+/******************Theme Selectors-Radio Buttons******************/
 
 .btn-radio-group {
 }
@@ -403,7 +403,6 @@ input[type='checkbox'].toggle:checked + label {
 
 .btn-audio-active {
   transform: scale(0.9);
-  /*   background-color: #2466743d; */
   box-shadow: inset 3px 3px 3px 0px rgba(0, 0, 0, 0.75);
 }
 
@@ -428,7 +427,7 @@ input[type='checkbox'].toggle:checked + label {
   fill: var(--color-main);
 }
 
-/****************************History-Right Panel********************************/
+/********************History-Right Panel********************/
 
 .calc-panel-right {
   width: 26rem;

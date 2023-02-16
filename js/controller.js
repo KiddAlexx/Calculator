@@ -188,8 +188,10 @@ const switchThemes = function () {
       audioMatrix.pause();
       audioHollowKnight.pause();
 
-      btnAudioMute.classList.remove('btn-audio-active');
+      btnAudioMute.classList.add('btn-audio-active');
       btnAudioPlay.classList.remove('btn-audio-active');
+      btnAudioMute.classList.remove('btn-audio-hover');
+      btnAudioPlay.classList.add('btn-audio-hover');
 
       if (
         btnContent === 'neon-city' &&
