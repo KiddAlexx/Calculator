@@ -1,5 +1,5 @@
-@media (max-width: 650px) {
+@media (max-width: 900px) {
   body {
-    width: 1.5vw;
+    width: 100em;
   }
 }

@@ -55,6 +55,19 @@ let calcHistory = [];
 ///////////// VIEW
 ////////////
 
+// Adjust screen layout based on viewport
+const adjustLayout = function () {
+  setTimeout(function () {
+    window.scrollTo(window.innerWidth / 3, 0);
+    console.log('adjust layout called');
+  }, 200);
+};
+
+window.onload = adjustLayout;
+window.addEventListener('resize', e => {
+  adjustLayout();
+});
+
 // Check current data values and update screen accordingly.
 const updateScreen = function () {
   if (calcData.activeNumber.length > 0) {

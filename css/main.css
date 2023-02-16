@@ -98,6 +98,7 @@
 
 html {
   font-size: 62.5%;
+  overflow: auto;
 }
 body {
   position: relative;
@@ -126,7 +127,7 @@ main {
   width: 100%;
   z-index: -10;
   opacity: var(--vid-opacity);
-  overflow: hidden;
+  overflow-y: hidden;
 }
 
 .bg-video-content {
