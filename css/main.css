@@ -12,6 +12,8 @@
   --color-hover: #0f2731;
 
   --screen-gradient: linear-gradient(to bottom, #4e7ace, #4edaf7);
+  --screen-dark: #408bbd;
+  --screen-light: #4edaf7;
 
   /* Used on calc btns */
   --shadow-dark-sm: 2px 2px 2px 0 rgba(0, 0, 0, 0.25);
@@ -39,6 +41,8 @@
   --color-hover: #0f2731;
 
   --screen-gradient: linear-gradient(to bottom, #1fa422, #83e57e);
+  --screen-light: #79e775;
+  --screen-dark: #325a30;
 
   /* Used on calc btns */
   --shadow-dark-sm: 2px 2px 2px 0 rgba(0, 0, 0, 0.25);
@@ -66,6 +70,8 @@
   --color-hover: #0f2731;
 
   --screen-gradient: linear-gradient(to bottom, #3e5286, #699aa8);
+  --screen-dark: #5d6c97;
+  --screen-light: #72c0ad;
 
   /* Used on calc btns */
   --shadow-dark-sm: 2px 2px 2px 0 rgba(0, 0, 0, 0.25);
@@ -222,7 +228,7 @@ input[type='checkbox'].toggle {
 }
 /* Switch Label */
 input[type='checkbox'].toggle + label {
-  color: #4ea7e1;
+  color: var(--screen-dark);
   user-select: none;
   position: relative;
   display: flex;
@@ -259,11 +265,11 @@ input[type='checkbox'].toggle:checked + label::after {
 }
 
 input[type='checkbox'].toggle:checked + label::before {
-  /* background-color: #4edaf7; */
+  /* background-color: var(--screen-light) */
 }
 
 input[type='checkbox'].toggle:checked + label {
-  color: #4edaf7;
+  color: var(--screen-light);
 }
 
 /**********************Calculator Buttons**********************/
