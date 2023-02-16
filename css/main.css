@@ -96,7 +96,7 @@ html {
 body {
   position: relative;
   /* font-size: 1.06rem; */
-  --font-calc: 'Teko', sans-serif; /*****Temp for testing***** */
+  font-family: var(--font-calc);
 }
 
 .main-page {
@@ -146,7 +146,7 @@ header {
   border: none;
   background: none;
   color: white;
-  font-family: var(--font-calc);
+
   font-weight: 300;
   font-size: 3rem;
   letter-spacing: 0.4rem;
@@ -160,8 +160,6 @@ header {
 }
 
 .calculator-body {
-  font-family: var(--font-calc);
-
   position: relative;
   z-index: 2;
   display: grid;
@@ -333,7 +331,6 @@ input[type='checkbox'].toggle:checked + label {
 /************************Theme Selectors-Radio Buttons*************************/
 
 .btn-radio-group {
-  font-family: var(--font-calc);
 }
 
 .input-theme {
@@ -453,7 +450,6 @@ input[type='checkbox'].toggle:checked + label {
 }
 
 .history-container {
-  font-family: var(--font-calc);
   color: var(--color-main-light);
   height: 7.5rem;
   padding-right: 1rem;
@@ -514,7 +510,7 @@ footer {
   justify-content: center;
   gap: 3rem;
   align-items: center;
-  font-family: var(--font-calc);
+
   font-weight: 300;
   color: white;
   /*   padding-left: 6rem;
