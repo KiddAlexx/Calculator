@@ -12,7 +12,7 @@
   --color-hover: #0f2731;
 
   --screen-gradient: linear-gradient(to bottom, #4e7ace, #4edaf7);
-  --screen-dark: #408bbd;
+  --screen-dark: #2990a5;
   --screen-light: #4edaf7;
 
   /* Used on calc btns */
@@ -70,7 +70,7 @@
   --color-hover: #0f2731;
 
   --screen-gradient: linear-gradient(to bottom, #3e5286, #699aa8);
-  --screen-dark: #5d6c97;
+  --screen-dark: #2b554a;
   --screen-light: #72c0ad;
 
   /* Used on calc btns */
