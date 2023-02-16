@@ -1,27 +1,36 @@
 'use strict';
 
-// Store UI elements.
-const btnCalc = document.querySelectorAll('.btn-calc');
-const btnTheme = document.querySelectorAll('.input-theme');
 const bodyEl = document.querySelector('body');
-const bgVideoSource = document.querySelector('.bg-video-content source');
-const bgVideo = document.querySelector('.bg-video-content');
+
+// Main calculator buttons
+const btnCalc = document.querySelectorAll('.btn-calc');
+
+// Main screen - display
 const screenLower = document.querySelector('.screen-lower');
 const screenUpper = document.querySelector('.screen-upper');
 
+// Background video
+const bgVideoSource = document.querySelector('.bg-video-content source');
+const bgVideo = document.querySelector('.bg-video-content');
+
+// Toggle switches
 const toggleThemes = document.querySelector('.toggle-themes');
 const toggleHistory = document.querySelector('.toggle-history');
-const calcPanelLeft = document.querySelector('.calc-panel-left');
-const calcPanelRight = document.querySelector('.calc-panel-right');
 
+// Used for left panel - Themes
+const calcPanelLeft = document.querySelector('.calc-panel-left');
+const btnTheme = document.querySelectorAll('.input-theme');
+const btnAudioMute = document.querySelector('.audio-mute');
+const btnAudioPlay = document.querySelector('.audio-play');
+
+// Used for right panel - History
+const calcPanelRight = document.querySelector('.calc-panel-right');
 const calcPanelRightContainer = document.querySelector(
   '.calc-panel-right-container'
 );
 const btnHistoryDelete = document.querySelector('.btn-history-delete');
 
-const btnAudioMute = document.querySelector('.audio-mute');
-const btnAudioPlay = document.querySelector('.audio-play');
-
+// Audio files for themes
 const audioNeonCity = new Audio('../audio/neon-city.mp3');
 const audioMatrix = new Audio('../audio/matrix.mp3');
 const audioHollowKnight = new Audio('../audio/hollow-knight.mp3');
@@ -53,30 +62,42 @@ let calcHistory = [];
 
 // Check current data values and update screen accordingly.
 const updateScreen = function () {
+  // If active number containes data then display this on lower screen.
   if (calcData.activeNumber.length > 0) {
     screenLower.innerText = calcData.activeNumber
       .toString()
       .replaceAll(',', '');
+    // If number one contains data,active number does not, and result has no value
+    // then display number one on lower screen.
   } else if (
     calcData.numberOne &&
     calcData.activeNumber.length < 1 &&
     !calcData.result
   ) {
     screenLower.innerText = calcData.numberOne;
+    // If result contains data,
+    // then display result on lower screen.
   } else if (calcData.result) {
     screenLower.innerText = calcData.result;
   } else {
     screenLower.innerText = '0';
   }
-
+  // If number one exists and result does not
+  // Display number one on upper screen
+  // and the last operator which has been entered.
   if (calcData.numberOne && !calcData.result) {
     screenUpper.innerText = `${calcData.numberOne} ${
       calcData.operatorArr.length > 0
         ? calcData.operatorArr.slice(-1)
         : calcData.operator
     }`;
+    // If result has value and last key was '='
+    // Then display sum on top screen.
   } else if (calcData.result && calcData.curType === 'equals') {
     screenUpper.innerText = `${calcData.numberOne} ${calcData.operator} ${calcData.numberTwo} =`;
+    // If result has value then dislay on upper screen
+    // If operator array contains entry, take last entry
+    // otherwise take value from operator variable.
   } else if (calcData.result) {
     screenUpper.innerText = `${calcData.result} ${
       calcData.operatorArr.length > 0
@@ -94,6 +115,8 @@ const updateScreen = function () {
 const displayHistoryPanel = function () {
   const calc = calcHistory[calcHistory.length - 1];
 
+  // Assigns a number to each entry which matches its position in the array,
+  // This can then be used to retrieve the data when required.
   const historyHTML = `<div class="history-container" history-position="${
     calcHistory.length - 1
   }"> <div class="history-equation">${calc.num1} ${calc.operator} ${
@@ -103,10 +126,11 @@ const displayHistoryPanel = function () {
                        </div>`;
 
   calcPanelRightContainer.insertAdjacentHTML('beforeend', historyHTML);
-
+  // Reset trash button to original state
   if (btnHistoryDelete.classList.contains('btn-history-delete-active')) {
     btnHistoryDelete.classList.remove('btn-history-delete-active');
   }
+  // Add hover state to trash button
   if (!btnHistoryDelete.classList.contains('btn-history-hover')) {
     btnHistoryDelete.classList.add('btn-history-hover');
   }
@@ -151,7 +175,7 @@ const clearHistory = function () {
   btnHistoryDelete.addEventListener('click', e => {
     calcHistory = [];
     calcPanelRightContainer.innerHTML = '';
-
+    // Reset trash button state.
     btnHistoryDelete.classList.remove('btn-history-hover');
     btnHistoryDelete.classList.add('btn-history-delete-active');
     console.log(e);
@@ -183,11 +207,11 @@ const switchThemes = function () {
   btnTheme.forEach(button => {
     button.addEventListener('click', e => {
       const btnContent = e.target.id;
-
+      // Pause all audio on theme change.
       audioNeonCity.pause();
       audioMatrix.pause();
       audioHollowKnight.pause();
-
+      // Ensure audio buttons reflect current audio state.
       btnAudioMute.classList.add('btn-audio-active');
       btnAudioPlay.classList.remove('btn-audio-active');
       btnAudioMute.classList.remove('btn-audio-hover');
@@ -304,7 +328,8 @@ const themeAudio = function () {
 //////////// CALCULATOR FUNCTION
 ///////////
 
-// Takes two numbers and calculates result based upon current operator value.
+// Takes two numbers and calculates result based upon current operator value,
+// Assigns all values to history array + display in history panel.
 const calculateResult = function (numOne, numTwo) {
   let sum;
 
@@ -340,6 +365,7 @@ const calculateResult = function (numOne, numTwo) {
 
 // Takes an input and assigns it a type and a value.
 // The content will be passed from the collecInputs functions.
+// This data will be required for calculation logic.
 const assignDataValues = function (content) {
   let type;
   let value;
@@ -436,7 +462,7 @@ const collectInputsKey = function () {
     console.log(calcData.result);
   });
 };
-
+// Animates calculator buttons upon keyboard input.
 const animateKeys = function () {
   document.addEventListener('keydown', function (e) {
     const btnValue = assignDataValues(e.key);
