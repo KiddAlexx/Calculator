@@ -13,6 +13,7 @@ const toggleThemes = document.querySelector('.toggle-themes');
 const toggleHistory = document.querySelector('.toggle-history');
 const calcPanelLeft = document.querySelector('.calc-panel-left');
 const calcPanelRight = document.querySelector('.calc-panel-right');
+const mainEl = document.querySelector('.main');
 
 const calcPanelRightContainer = document.querySelector(
   '.calc-panel-right-container'
@@ -55,7 +56,7 @@ let calcHistory = [];
 ///////////// VIEW
 ////////////
 
-// Adjust screen layout based on viewport
+/* // Adjust screen layout based on viewport
 const adjustLayout = function () {
   setTimeout(function () {
     window.scrollTo(window.innerWidth / 3, 0);
@@ -66,7 +67,7 @@ const adjustLayout = function () {
 window.onload = adjustLayout;
 window.addEventListener('resize', e => {
   adjustLayout();
-});
+}); */
 
 // Check current data values and update screen accordingly.
 const updateScreen = function () {
@@ -181,15 +182,19 @@ const animatePanels = function () {
   toggleThemes.addEventListener('change', e => {
     if (toggleThemes.checked === true) {
       calcPanelLeft.classList.add('calc-panel-left-active');
+      mainEl.classList.add('main-themes');
     } else {
       calcPanelLeft.classList.remove('calc-panel-left-active');
+      mainEl.classList.remove('main-themes');
     }
   });
   toggleHistory.addEventListener('change', e => {
     if (toggleHistory.checked === true) {
       calcPanelRight.classList.add('calc-panel-right-active');
+      mainEl.classList.add('main-history');
     } else {
       calcPanelRight.classList.remove('calc-panel-right-active');
+      mainEl.classList.remove('main-history');
     }
   });
 };

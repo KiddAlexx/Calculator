@@ -98,7 +98,7 @@
 
 html {
   font-size: 62.5%;
-  overflow: auto;
+  /*   overflow: hidden; */
 }
 body {
   position: relative;
@@ -113,12 +113,20 @@ body {
   justify-content: space-between;
 }
 
-main {
+.main {
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: all 0.8s ease-in-out;
 }
 
+.main-history {
+  /*   transform: translateX(-25rem); */
+}
+
+.main-themes {
+  /*   transform: translateX(24rem); */
+}
 .bg-video {
   position: absolute;
   top: 0;
@@ -328,7 +336,7 @@ input[type='checkbox'].toggle:checked + label {
   left: 0px;
   top: 16px;
   z-index: 1;
-  transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1);
+  transition: transform 0.8s ease-in-out;
 }
 
 .calc-panel-left-active {
@@ -446,7 +454,7 @@ input[type='checkbox'].toggle:checked + label {
   right: 0px;
   top: 16px;
   z-index: 1;
-  transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1);
+  transition: transform 0.8s ease-in-out;
 }
 
 .calc-panel-right-container {
