@@ -31,9 +31,9 @@ const calcPanelRightContainer = document.querySelector(
 const btnHistoryDelete = document.querySelector('.btn-history-delete');
 
 // Audio files for themes
-const audioNeonCity = new Audio('../audio/neon-city.mp3');
-const audioMatrix = new Audio('../audio/matrix.mp3');
-const audioHollowKnight = new Audio('../audio/hollow-knight.mp3');
+const audioNeonCity = new Audio('./audio/neon-city.mp3');
+const audioMatrix = new Audio('./audio/matrix.mp3');
+const audioHollowKnight = new Audio('./audio/hollow-knight.mp3');
 
 // Data to use for cheking input type.
 const numberValues = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
