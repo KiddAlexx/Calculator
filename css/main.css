@@ -108,6 +108,7 @@ html {
 body {
   position: relative;
   font-family: var(--font-calc);
+  min-width: 90rem;
 }
 
 .main-page {
