@@ -136,8 +136,8 @@ const displayHistoryPanel = function () {
   }
 };
 
-// Listen for click on history panel
-// then re-display selected calculation on screen
+// Listen for click on history panel,
+// then re-display selected calculation on screen.
 
 const displayHistoryScreen = function () {
   calcPanelRightContainer.addEventListener('click', e => {
@@ -160,7 +160,8 @@ const displayHistoryScreen = function () {
       calcData.operator = calc.operator;
       calcData.result = calc.result;
 
-      // This ensures that updateScreen() works to display the selected calculation on screen, treating a click of a previous calculation in the same way as selecting the = sign.
+      // This ensures that updateScreen() works to display the selected calculation on screen,
+      // treating a click of a previous calculation in the same way as selecting the = sign.
       assignDataValues('=');
       updateScreen();
 
