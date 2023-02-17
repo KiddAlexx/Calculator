@@ -5,6 +5,7 @@
   --color-black: #001616;
   --color-black-opacity: rgba(0, 22, 22, 0.8);
   --color-black-opacity-2: rgba(0, 0, 0, 0.4);
+
   /* used on calc-btn */
   --color-main: #d720b2;
   --color-main-opacity: rgba(215, 32, 178, 0.8);
@@ -18,6 +19,7 @@
   /* Used on calc btns */
   --shadow-dark-sm: 2px 2px 2px 0 rgba(0, 0, 0, 0.25);
   --highlight-main-sm: -2px -2px 2px 0 rgba(236, 134, 221, 0.64);
+
   /* Used on calc screen */
   --highlight-dark-sm: -2px -2px 2px 0 rgba(0, 0, 0, 0.25);
 
@@ -34,6 +36,7 @@
   --color-black: #0c0c0c;
   --color-black-opacity: rgba(13, 13, 13, 0.658);
   --color-black-opacity-2: rgba(0, 0, 0, 0.6);
+
   /* used on calc-btn */
   --color-main: #53de54;
   --color-main-opacity: rgba(83, 222, 83, 0.8);
@@ -47,6 +50,7 @@
   /* Used on calc btns */
   --shadow-dark-sm: 2px 2px 2px 0 rgba(0, 0, 0, 0.25);
   --highlight-main-sm: -2px -2px 2px 0 rgb(81, 213, 82);
+
   /* Used on calc screen */
   --highlight-dark-sm: -2px -2px 2px 0 rgba(0, 0, 0, 0.25);
 
@@ -63,6 +67,7 @@
   --color-black: #001616;
   --color-black-opacity: rgba(0, 22, 22, 0.8);
   --color-black-opacity-2: rgba(0, 0, 0, 0.4);
+
   /* used on calc-btn */
   --color-main: #65b5a1;
   --color-main-opacity: rgba(101, 181, 161, 0.8);
@@ -76,6 +81,7 @@
   /* Used on calc btns */
   --shadow-dark-sm: 2px 2px 2px 0 rgba(0, 0, 0, 0.25);
   --highlight-main-sm: -2px -2px 2px 0 rgb(128, 189, 139);
+
   /* Used on calc screen */
   --highlight-dark-sm: -2px -2px 2px 0 rgba(0, 0, 0, 0.25);
 
@@ -88,7 +94,7 @@
   --font-calc: 'Teko', sans-serif;
 }
 
-/************************** Main Style **************************/
+/*********************** Main Style ***********************/
 
 * {
   padding: 0;
@@ -102,8 +108,8 @@ html {
 }
 body {
   position: relative;
-
   font-family: var(--font-calc);
+  min-width: 90rem;
 }
 
 .main-page {
@@ -144,7 +150,7 @@ body {
   object-fit: cover;
 }
 
-/************************** Header Style **************************/
+/*********************** Header Style ***********************/
 
 header {
   background-color: rgba(0, 22, 22, 0.9);
@@ -161,13 +167,12 @@ header {
   border: none;
   background: none;
   color: white;
-
   font-weight: 300;
   font-size: 3rem;
   letter-spacing: 0.4rem;
 }
 
-/************************ Calculator Style ************************/
+/********************* Calculator Style *********************/
 
 .calculator-app {
   position: relative;
@@ -180,20 +185,15 @@ header {
   display: grid;
   gap: 1rem;
   grid-template-columns: repeat(4, 1fr);
-  /*   grid-template-rows: repeat(7, 1fr); */
   grid-template-rows: repeat(2, 1fr) 2.5rem repeat(5, 1fr);
-  /*  width: min(40rem, 53vh);
-  height: min(60rem, 80vh); */
   width: 35.2rem;
   height: 46.2rem;
-
-  /*   opacity: 0; */
   padding: 1.6rem;
   background-color: var(--color-black);
   border-radius: 2%;
 }
 
-/**********************Calculator Screen**********************/
+/*********************Calculator Screen*********************/
 
 .calculator-screen {
   grid-column: 1/5;
@@ -202,7 +202,6 @@ header {
   border: 0.1rem solid var(--color-black);
   box-shadow: inset var(--shadow-dark-sm), inset var(--highlight-dark-sm);
   border-radius: 2%;
-  /*   margin-bottom: 0.5rem; */
   padding-bottom: 4.5rem;
   padding-right: 1rem;
   text-align: right;
@@ -220,12 +219,11 @@ header {
   height: 50%;
 }
 
-/**********************Calculator Switches**********************/
+/********************Calculator Switches********************/
 .calculator-switches {
   grid-column: 1/5;
   grid-row: 3/4;
   display: flex;
-
   gap: 4.5rem;
 }
 
@@ -273,15 +271,11 @@ input[type='checkbox'].toggle:checked + label::after {
   transform: translateX(100%);
 }
 
-input[type='checkbox'].toggle:checked + label::before {
-  /* background-color: var(--screen-light) */
-}
-
 input[type='checkbox'].toggle:checked + label {
   color: var(--screen-light);
 }
 
-/**********************Calculator Buttons**********************/
+/*********************Calculator Buttons*********************/
 .btn-0 {
   grid-column: 1/3;
 }
@@ -293,12 +287,12 @@ input[type='checkbox'].toggle:checked + label {
   border: 0;
   border-radius: 5%;
   font-size: 2.6rem;
-
   box-shadow: var(--shadow-dark-sm), var(--highlight-main-sm);
 }
 
 .btn-calc:hover {
   background-color: var(--color-hover);
+  cursor: pointer;
 }
 .btn-calc:active {
   box-shadow: inset var(--shadow-dark-sm), inset var(--highlight-main-sm);
@@ -306,13 +300,14 @@ input[type='checkbox'].toggle:checked + label {
   background-color: var(--color-black);
 }
 
+/* For animation of keys in response to keyboard input */
 .key-active {
   box-shadow: inset var(--shadow-dark-sm), inset var(--highlight-main-sm);
   transform: translate(+1.5px, +1.5px);
   background-color: var(--color-black);
 }
 
-/********************** Calculator Panels **********************/
+/********************* Calculator Panels *********************/
 
 .calc-panel {
   width: 25rem;
@@ -320,19 +315,16 @@ input[type='checkbox'].toggle:checked + label {
   background-color: var(--color-black-opacity);
 }
 
-/**********************Themes-Left Panel**********************/
+/*********************Themes-Left Panel*********************/
 .calc-panel-left {
   display: grid;
   grid-template-rows: repeat(4, 1fr);
   align-items: center;
   justify-items: center;
   padding-right: 1.6rem;
-
   position: absolute;
-
   border-radius: 2% 0 0 2%;
   box-shadow: inset 0px 0px 0px 10px var(--color-black);
-
   left: 0px;
   top: 16px;
   z-index: 1;
@@ -343,11 +335,7 @@ input[type='checkbox'].toggle:checked + label {
   transform: translateX(-240px);
 }
 
-/******************Theme Selectors-Radio Buttons******************/
-
-.btn-radio-group {
-}
-
+/***************Theme Selectors-Radio Buttons**************/
 .input-theme {
   position: absolute;
   left: -101vw;
@@ -360,8 +348,7 @@ input[type='checkbox'].toggle:checked + label {
   letter-spacing: 0.1rem;
   cursor: pointer;
   user-select: none;
-
-  color: var(--color-main-light); /* temp */
+  color: var(--color-main-light);
 }
 
 .theme-radio-btn {
@@ -373,7 +360,6 @@ input[type='checkbox'].toggle:checked + label {
   border-radius: 20%;
   top: 0.4em;
   margin-left: 0.4em;
-  /*  box-shadow: inset 2px 2px 4px 0px rgba(37, 37, 37, 0.75); */
 }
 
 .theme-radio-btn::after {
@@ -391,14 +377,11 @@ input[type='checkbox'].toggle:checked + label {
   transition: opacity 0.2s;
 }
 
-.input-theme:checked ~ .label-theme {
-  /*   color: var(--color-main); */
-}
 .input-theme:checked ~ .label-theme .theme-radio-btn::after {
   opacity: 1;
 }
 
-/************************Audio Controls*************************/
+/*********************Audio Controls**********************/
 
 .btn-audio {
   border: none;
@@ -407,7 +390,6 @@ input[type='checkbox'].toggle:checked + label {
   width: 6rem;
   border-radius: 5%;
   margin-top: 2rem;
-
   cursor: pointer;
   transition: all 0.2s ease-in-out;
 }
@@ -426,7 +408,6 @@ input[type='checkbox'].toggle:checked + label {
   height: 100%;
   display: flex;
   justify-content: end;
-
   gap: 3rem;
   padding-right: 3rem;
 }
@@ -434,7 +415,6 @@ input[type='checkbox'].toggle:checked + label {
 .audio-icon {
   height: 5rem;
   padding: 0.5rem;
-
   fill: var(--color-main-light);
 }
 
@@ -450,7 +430,6 @@ input[type='checkbox'].toggle:checked + label {
   text-align: end;
   border-radius: 0 2% 2% 0;
   box-shadow: inset 0px 0px 0px 10px var(--color-black);
-  /*  padding: 0.9rem; */
   right: 0px;
   top: 16px;
   z-index: 1;
@@ -481,13 +460,10 @@ input[type='checkbox'].toggle:checked + label {
 .history-equation {
   font-size: 2rem;
   letter-spacing: 1px;
-
-  /*  margin-bottom: 0.2rem; */
 }
 
 .history-result {
   font-size: 3.2rem;
-
   letter-spacing: 0.1rem;
 }
 
@@ -517,23 +493,19 @@ input[type='checkbox'].toggle:checked + label {
   transform: translateX(250px);
 }
 
-/************************ Footer Style ************************/
+/********************** Footer Style **********************/
 
 footer {
   display: flex;
   justify-content: center;
   gap: 3rem;
   align-items: center;
-
   font-weight: 300;
   color: white;
-  /*   padding-left: 6rem;
-  padding-right: 6rem; */
   background-color: rgba(0, 22, 22, 0.9);
   height: 8rem;
   font-size: 3rem;
   letter-spacing: 0.4rem;
-  color: white;
 }
 .icon-container {
   display: flex;
