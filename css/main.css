@@ -275,8 +275,13 @@ input[type='checkbox'].toggle:checked + label {
   color: var(--screen-light);
 }
 
-/* Hide slider which is to be used in responsive mode */
+/* Hide sliders which are to be used in responsive mode */
 input[type='checkbox'].toggle-themes-responsive + label {
+  display: none;
+  position: absolute;
+  left: -101vw;
+}
+input[type='checkbox'].toggle-history-responsive + label {
   display: none;
   position: absolute;
   left: -101vw;
