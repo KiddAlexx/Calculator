@@ -1,4 +1,4 @@
-@media (max-width: 900px) {
+@media (max-width: 56em) /* 900px */ {
   .calc-panel-left-active {
     animation-name: reveal-left-panel;
     animation-duration: 1.5s;
