@@ -16,7 +16,13 @@ const bgVideo = document.querySelector('.bg-video-content');
 
 // Toggle switches
 const toggleThemes = document.querySelector('.toggle-themes');
+const toggleThemesResponsive = document.querySelector(
+  '.toggle-themes-responsive'
+);
 const toggleHistory = document.querySelector('.toggle-history');
+const toggleHistoryResponsive = document.querySelector(
+  '.toggle-history-responsive'
+);
 
 // Used for left panel - Themes
 const calcPanelLeft = document.querySelector('.calc-panel-left');
@@ -208,19 +214,22 @@ const animatePanels = function () {
   toggleThemes.addEventListener('change', e => {
     if (toggleThemes.checked === true) {
       calcPanelLeft.classList.add('calc-panel-left-active');
-      mainEl.classList.add('main-themes');
+      toggleThemesResponsive.checked = true;
     } else {
       calcPanelLeft.classList.remove('calc-panel-left-active');
-      mainEl.classList.remove('main-themes');
+    }
+  });
+  toggleThemesResponsive.addEventListener('change', e => {
+    if (!toggleThemesResponsive.checked === true) {
+      toggleThemes.checked = false;
+      calcPanelLeft.classList.remove('calc-panel-left-active');
     }
   });
   toggleHistory.addEventListener('change', e => {
     if (toggleHistory.checked === true) {
       calcPanelRight.classList.add('calc-panel-right-active');
-      mainEl.classList.add('main-history');
     } else {
       calcPanelRight.classList.remove('calc-panel-right-active');
-      mainEl.classList.remove('main-history');
     }
   });
 };
