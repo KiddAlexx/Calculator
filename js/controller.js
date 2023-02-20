@@ -1,6 +1,7 @@
 'use strict';
 
 const bodyEl = document.querySelector('body');
+const mainEl = document.querySelector('.main');
 
 // Main calculator buttons
 const btnCalc = document.querySelectorAll('.btn-calc');
@@ -15,7 +16,13 @@ const bgVideo = document.querySelector('.bg-video-content');
 
 // Toggle switches
 const toggleThemes = document.querySelector('.toggle-themes');
+const toggleThemesResponsive = document.querySelector(
+  '.toggle-themes-responsive'
+);
 const toggleHistory = document.querySelector('.toggle-history');
+const toggleHistoryResponsive = document.querySelector(
+  '.toggle-history-responsive'
+);
 
 // Used for left panel - Themes
 const calcPanelLeft = document.querySelector('.calc-panel-left');
@@ -25,6 +32,7 @@ const btnAudioPlay = document.querySelector('.audio-play');
 
 // Used for right panel - History
 const calcPanelRight = document.querySelector('.calc-panel-right');
+
 const calcPanelRightContainer = document.querySelector(
   '.calc-panel-right-container'
 );
@@ -38,6 +46,10 @@ const audioHollowKnight = new Audio('./audio/hollow-knight.mp3');
 // Data to use for cheking input type.
 const numberValues = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
 const operatorValues = ['+', '-', 'x', '/'];
+
+//Data for media queries
+const mediaQueryMedium = window.matchMedia('(max-width: 900px');
+const mediaQuerySmall = window.matchMedia('(max-width: 650px');
 
 // Object to store all calculation data.
 const calcData = {
@@ -59,6 +71,19 @@ let calcHistory = [];
 //////////////////////////////////////////////////
 ///////////// VIEW
 ////////////
+
+/* // Adjust screen layout based on viewport
+const adjustLayout = function () {
+  setTimeout(function () {
+    window.scrollTo(window.innerWidth / 3, 0);
+    console.log('adjust layout called');
+  }, 200);
+};
+
+window.onload = adjustLayout;
+window.addEventListener('resize', e => {
+  adjustLayout();
+}); */
 
 // Check current data values and update screen accordingly.
 const updateScreen = function () {
@@ -189,15 +214,37 @@ const animatePanels = function () {
   toggleThemes.addEventListener('change', e => {
     if (toggleThemes.checked === true) {
       calcPanelLeft.classList.add('calc-panel-left-active');
-    } else {
+      calcPanelLeft.classList.remove('calc-panel-left-hidden');
+      toggleThemesResponsive.checked = true;
+    }
+    if (!toggleThemes.checked === true) {
       calcPanelLeft.classList.remove('calc-panel-left-active');
+      toggleThemesResponsive.checked = false;
+    }
+  });
+  toggleThemesResponsive.addEventListener('change', e => {
+    if (!toggleThemesResponsive.checked === true) {
+      toggleThemes.checked = false;
+      calcPanelLeft.classList.remove('calc-panel-left-active');
+      calcPanelLeft.classList.add('calc-panel-left-hidden');
     }
   });
   toggleHistory.addEventListener('change', e => {
     if (toggleHistory.checked === true) {
       calcPanelRight.classList.add('calc-panel-right-active');
-    } else {
+      calcPanelRight.classList.remove('calc-panel-right-hidden');
+      toggleHistoryResponsive.checked = true;
+    }
+    if (!toggleHistory.checked === true) {
       calcPanelRight.classList.remove('calc-panel-right-active');
+      toggleHistoryResponsive.checked = false;
+    }
+  });
+  toggleHistoryResponsive.addEventListener('change', e => {
+    if (!toggleHistoryResponsive.checked === true) {
+      toggleHistory.checked = false;
+      calcPanelRight.classList.remove('calc-panel-right-active');
+      calcPanelRight.classList.add('calc-panel-right-hidden');
     }
   });
 };

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/queries.css" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -30,7 +31,6 @@
           controls
           disablepictureinpicture
         >
-          <!--  <source src="img/neon-city-bg.mp4" type="video/mp4" /> -->
           <source src="img/neon-city-bg.mp4" type="video/mp4" />
           Your browser is not supported!
         </video>
@@ -38,10 +38,17 @@
       <header>
         <h1 class="page-title">Calculat000000000r!</h1>
       </header>
-      <main>
+      <main class="main">
         <div class="calculator-app">
           <div class="calc-panel calc-panel-left">
-            <div class="btn-radio-group">
+            <input
+              type="checkbox"
+              id="themes-responsive"
+              class="toggle toggle-themes-responsive"
+            /><label class="label-calc-switch" for="themes-responsive"
+              >Themes</label
+            >
+            <div class="btn-radio-group neon-city-radio">
               <input
                 type="radio"
                 id="neon-city"
@@ -54,7 +61,7 @@
                 >Neon City <span class="theme-radio-btn"></span
               ></label>
             </div>
-            <div class="btn-radio-group">
+            <div class="btn-radio-group matrix-radio">
               <input
                 type="radio"
                 id="matrix"
@@ -66,7 +73,7 @@
                 >Matrix <span class="theme-radio-btn"></span
               ></label>
             </div>
-            <div class="btn-radio-group">
+            <div class="btn-radio-group hollow-knight-radio">
               <input
                 type="radio"
                 id="hollow-knight"
@@ -146,6 +153,13 @@
             <button class="btn-calc">=</button>
           </div>
           <div class="calc-panel calc-panel-right">
+            <input
+              type="checkbox"
+              id="history-responsive"
+              class="toggle toggle-history-responsive"
+            /><label class="label-calc-switch" for="history-responsive"
+              >History</label
+            >
             <button class="btn-history-delete btn-history-hover">
               <svg
                 class="icon-history-delete"

@@ -104,11 +104,12 @@
 
 html {
   font-size: 62.5%;
+  overflow: hidden;
 }
 body {
   position: relative;
   font-family: var(--font-calc);
-  min-width: 90rem;
+  /*   min-width: 90rem; */
 }
 
 .main-page {
@@ -118,12 +119,20 @@ body {
   justify-content: space-between;
 }
 
-main {
+.main {
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: all 0.8s ease-in-out;
 }
 
+.main-history {
+  /*   transform: translateX(-25rem); */
+}
+
+.main-themes {
+  /*   transform: translateX(24rem); */
+}
 .bg-video {
   position: absolute;
   top: 0;
@@ -132,7 +141,7 @@ main {
   width: 100%;
   z-index: -10;
   opacity: var(--vid-opacity);
-  overflow: hidden;
+  overflow-y: hidden;
 }
 
 .bg-video-content {
@@ -266,6 +275,18 @@ input[type='checkbox'].toggle:checked + label {
   color: var(--screen-light);
 }
 
+/* Hide sliders which are to be used in responsive mode */
+input[type='checkbox'].toggle-themes-responsive + label {
+  display: none;
+  position: absolute;
+  left: -101vw;
+}
+input[type='checkbox'].toggle-history-responsive + label {
+  display: none;
+  position: absolute;
+  left: -101vw;
+}
+
 /*********************Calculator Buttons*********************/
 .btn-0 {
   grid-column: 1/3;
@@ -319,7 +340,7 @@ input[type='checkbox'].toggle:checked + label {
   left: 0px;
   top: 16px;
   z-index: 1;
-  transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1);
+  transition: all 0.8s ease-in-out;
 }
 
 .calc-panel-left-active {
@@ -327,6 +348,7 @@ input[type='checkbox'].toggle:checked + label {
 }
 
 /***************Theme Selectors-Radio Buttons**************/
+
 .input-theme {
   position: absolute;
   left: -101vw;
@@ -424,7 +446,7 @@ input[type='checkbox'].toggle:checked + label {
   right: 0px;
   top: 16px;
   z-index: 1;
-  transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1);
+  transition: transform 0.8s ease-in-out;
 }
 
 .calc-panel-right-container {
@@ -463,7 +485,7 @@ input[type='checkbox'].toggle:checked + label {
   background: none;
   position: absolute;
   z-index: 10;
-  left: 28px;
+  left: 30px;
   bottom: 30px;
   transition: all 0.2s ease-in-out;
   cursor: pointer;
