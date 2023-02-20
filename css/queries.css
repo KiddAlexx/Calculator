@@ -1,4 +1,5 @@
 @media (max-width: 56em) /* 900px */ {
+  /* Animation to display left panel */
   .calc-panel-left-active {
     animation-name: reveal-left-panel;
     animation-duration: 1.5s;
@@ -6,6 +7,7 @@
     animation-timing-function: ease-in-out;
   }
 
+  /* Animation to display hide panel */
   .calc-panel-left-hidden {
     animation-name: hide-left-panel;
     animation-duration: 1.5s;
@@ -13,6 +15,7 @@
     animation-timing-function: ease-in-out;
   }
 
+  /* Adjust size and layout of left panel */
   .calc-panel-left {
     width: 32.8rem;
     grid-template-rows: repeat(5, 1fr);
@@ -20,6 +23,7 @@
     padding-right: 0rem;
   }
 
+  /* Display theme toggle switch on left panel */
   input[type='checkbox'].toggle-themes-responsive + label {
     color: var(--screen-dark);
     user-select: none;
@@ -32,6 +36,7 @@
     left: 0;
   }
 
+  /* adjust position of buttons in left panel */
   .neon-city-radio {
     padding-right: 3rem;
   }
@@ -94,13 +99,14 @@
     }
   }
 
+  /* Animation to display right panel */
   .calc-panel-right-active {
     animation-name: reveal-right-panel;
     animation-duration: 1.5s;
     animation-fill-mode: forwards;
     animation-timing-function: ease-in-out;
   }
-
+  /* Animation to hide right panel */
   .calc-panel-right-hidden {
     animation-name: hide-right-panel;
     animation-duration: 1.5s;
@@ -108,13 +114,17 @@
     animation-timing-function: ease-in-out;
   }
 
+  /* Adjust size and layout of right panel */
   .calc-panel-right {
     width: 32.8rem;
-    grid-template-rows: repeat(5, 1fr);
     background-color: rgba(15, 28, 28, 0.96);
-    padding-right: 0rem;
   }
 
+  .history-container {
+    padding-right: 2rem;
+  }
+
+  /* Display history toggle switch on right panel */
   input[type='checkbox'].toggle-history-responsive + label {
     color: var(--screen-dark);
     user-select: none;
