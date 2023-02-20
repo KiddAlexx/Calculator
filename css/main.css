@@ -275,6 +275,13 @@ input[type='checkbox'].toggle:checked + label {
   color: var(--screen-light);
 }
 
+/* Hide slider which is to be used in responsive mode */
+input[type='checkbox'].toggle-themes-responsive + label {
+  display: none;
+  position: absolute;
+  left: -101vw;
+}
+
 /*********************Calculator Buttons*********************/
 .btn-0 {
   grid-column: 1/3;
@@ -336,6 +343,7 @@ input[type='checkbox'].toggle:checked + label {
 }
 
 /***************Theme Selectors-Radio Buttons**************/
+
 .input-theme {
   position: absolute;
   left: -101vw;
