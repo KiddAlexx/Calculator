@@ -1,5 +1,39 @@
-/* @media (max-width: 900px) {
-  body {
-    width: 100em;
+@media (max-width: 900px) {
+  .calc-panel-left-active {
+    animation-name: slide-left-panel;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
   }
-} */
+
+  .calc-panel-left {
+    width: 32.8rem;
+    background-color: rgba(31, 43, 43, 0.888);
+    padding-right: 0rem;
+  }
+
+  .audio-control {
+    justify-content: center;
+    gap: 4rem;
+    padding-right: 0rem;
+  }
+
+  @keyframes slide-left-panel {
+    0% {
+      transform: translateX(0);
+      z-index: 1;
+    }
+    50% {
+      transform: translateX(-325px);
+      z-index: 1;
+    }
+    51% {
+      z-index: 3;
+    }
+
+    100% {
+      transform: translateX(10px);
+      z-index: 3;
+    }
+  }
+}

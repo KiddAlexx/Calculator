@@ -1,6 +1,7 @@
 'use strict';
 
 const bodyEl = document.querySelector('body');
+const mainEl = document.querySelector('.main');
 
 // Main calculator buttons
 const btnCalc = document.querySelectorAll('.btn-calc');
@@ -25,7 +26,6 @@ const btnAudioPlay = document.querySelector('.audio-play');
 
 // Used for right panel - History
 const calcPanelRight = document.querySelector('.calc-panel-right');
-const mainEl = document.querySelector('.main');
 
 const calcPanelRightContainer = document.querySelector(
   '.calc-panel-right-container'
