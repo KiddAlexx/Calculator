@@ -232,8 +232,19 @@ const animatePanels = function () {
   toggleHistory.addEventListener('change', e => {
     if (toggleHistory.checked === true) {
       calcPanelRight.classList.add('calc-panel-right-active');
-    } else {
+      calcPanelRight.classList.remove('calc-panel-right-hidden');
+      toggleHistoryResponsive.checked = true;
+    }
+    if (!toggleHistory.checked === true) {
       calcPanelRight.classList.remove('calc-panel-right-active');
+      toggleHistoryResponsive.checked = false;
+    }
+  });
+  toggleHistoryResponsive.addEventListener('change', e => {
+    if (!toggleHistoryResponsive.checked === true) {
+      toggleHistory.checked = false;
+      calcPanelRight.classList.remove('calc-panel-right-active');
+      calcPanelRight.classList.add('calc-panel-right-hidden');
     }
   });
 };
