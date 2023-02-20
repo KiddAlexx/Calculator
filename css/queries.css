@@ -16,14 +16,34 @@
 
   .calc-panel-left {
     width: 32.8rem;
-    background-color: rgba(31, 43, 43, 0.888);
+
+    grid-template-rows: repeat(5, 1fr);
+    background-color: rgba(15, 28, 28, 0.96);
     padding-right: 0rem;
+  }
+
+  .neon-city-radio {
+    padding-right: 3rem;
+  }
+
+  .matrix-radio {
+    padding-left: 0.1rem;
+  }
+
+  .hollow-knight-radio {
+    padding-right: 6.5rem;
   }
 
   .audio-control {
     justify-content: center;
     gap: 4rem;
     padding-right: 0rem;
+  }
+
+  .btn-audio {
+    margin-top: 0rem;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
   }
 
   @keyframes reveal-left-panel {
