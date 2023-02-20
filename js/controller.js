@@ -214,15 +214,19 @@ const animatePanels = function () {
   toggleThemes.addEventListener('change', e => {
     if (toggleThemes.checked === true) {
       calcPanelLeft.classList.add('calc-panel-left-active');
+      calcPanelLeft.classList.remove('calc-panel-left-hidden');
       toggleThemesResponsive.checked = true;
-    } else {
+    }
+    if (!toggleThemes.checked === true) {
       calcPanelLeft.classList.remove('calc-panel-left-active');
+      toggleThemesResponsive.checked = false;
     }
   });
   toggleThemesResponsive.addEventListener('change', e => {
     if (!toggleThemesResponsive.checked === true) {
       toggleThemes.checked = false;
       calcPanelLeft.classList.remove('calc-panel-left-active');
+      calcPanelLeft.classList.add('calc-panel-left-hidden');
     }
   });
   toggleHistory.addEventListener('change', e => {
