@@ -540,6 +540,10 @@ input[type='checkbox'].toggle-history-responsive + label {
   list-style: none;
 }
 
+.credits-title-container {
+  position: relative;
+}
+
 .credits-modal h2 {
   font-size: 7rem;
   margin-bottom: 3rem;
@@ -563,6 +567,29 @@ input[type='checkbox'].toggle-history-responsive + label {
 .credits-link:hover,
 .credits-link:active {
   color: var(--color-main);
+}
+
+.btn-close-modal {
+  border: none;
+  background: none;
+  width: 5rem;
+  position: absolute;
+  right: -6em;
+  top: -2em;
+
+  fill: white;
+
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-close-modal:hover {
+  transform: scale(1.1);
+  transform: rotate(45deg);
+  cursor: pointer;
+}
+
+.btn-close-modal:active {
+  transform: rotate(180deg);
 }
 
 /********************** Footer Style **********************/
