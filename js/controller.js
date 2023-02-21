@@ -638,6 +638,7 @@ const calculatorLogic = function () {
   }
 };
 
+// Function to display and hide credits modal
 const displayCredits = function () {
   btnCredits.addEventListener('click', e => {
     creditsModal.classList.toggle('credits-modal-hidden');
