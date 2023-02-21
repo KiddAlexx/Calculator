@@ -525,7 +525,7 @@ input[type='checkbox'].toggle-history-responsive + label {
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: calc(100vh - 16rem);
+  height: calc(100% - 15.8rem);
   background-color: rgba(0, 22, 22, 0.9);
   color: var(--color-main-light);
   text-align: center;
@@ -591,4 +591,18 @@ footer {
 }
 .icon-github:active {
   transform: scale(0.9);
+}
+.btn-credits {
+  border: none;
+  background: none;
+  color: white;
+  font-family: inherit;
+  font-size: 3rem;
+  letter-spacing: 0.4rem;
+  transition: all 0.2s;
+}
+
+.btn-credits:hover {
+  transform: scale(1.1);
+  cursor: pointer;
 }
