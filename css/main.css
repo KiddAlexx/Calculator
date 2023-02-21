@@ -10,6 +10,8 @@
   --color-main: #d720b2;
   --color-main-opacity: rgba(215, 32, 178, 0.8);
   --color-main-light: #fbe9f7;
+  --color-main-medium: #fca9ea;
+
   --color-hover: #0f2731;
 
   --screen-gradient: linear-gradient(to bottom, #4e7ace, #4edaf7);
@@ -41,6 +43,7 @@
   --color-main: #53de54;
   --color-main-opacity: rgba(83, 222, 83, 0.8);
   --color-main-light: #ddf8dd;
+  --color-main-medium: #abfaab;
   --color-hover: #0f2731;
 
   --screen-gradient: linear-gradient(to bottom, #1fa422, #83e57e);
@@ -72,6 +75,7 @@
   --color-main: #65b5a1;
   --color-main-opacity: rgba(101, 181, 161, 0.8);
   --color-main-light: #e0f0ec;
+  --color-main-medium: #9df7e0;
   --color-hover: #0f2731;
 
   --screen-gradient: linear-gradient(to bottom, #3e5286, #699aa8);
@@ -536,11 +540,13 @@ input[type='checkbox'].toggle-history-responsive + label {
   font-size: 7rem;
   margin-bottom: 3rem;
   line-height: 0;
+  color: var(--color-main-medium);
 }
 .credits-modal h3 {
   font-size: 3rem;
   margin-top: 2rem;
   margin-bottom: 1rem;
+  color: var(--color-main-medium);
 }
 
 .credits-link:link,
