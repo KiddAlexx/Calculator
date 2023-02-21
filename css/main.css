@@ -532,6 +532,10 @@ input[type='checkbox'].toggle-history-responsive + label {
   padding: 2rem;
 }
 
+.credits-modal-hidden {
+  display: none;
+}
+
 .credits-modal ul {
   list-style: none;
 }
