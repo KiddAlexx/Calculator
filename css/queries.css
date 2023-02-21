@@ -154,3 +154,33 @@
     }
   }
 }
+
+/* Ajustments for footer and credits modal */
+@media (max-width: 35em) /* 560px */ {
+  footer {
+    gap: 2rem;
+    padding-right: 1rem;
+    padding-left: 1rem;
+  }
+  footer p {
+    width: 5em;
+  }
+
+  .credits-modal h2 {
+    font-size: 6rem;
+    margin-bottom: 3rem;
+    line-height: 0;
+  }
+
+  .credits-modal h3 {
+    font-size: 2.5rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .credits-link:link,
+  .credits-link:visited {
+    font-size: 2rem;
+    transition: all 0.2s;
+  }
+}

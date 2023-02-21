@@ -10,6 +10,8 @@
   --color-main: #d720b2;
   --color-main-opacity: rgba(215, 32, 178, 0.8);
   --color-main-light: #fbe9f7;
+  --color-main-medium: #fca9ea;
+
   --color-hover: #0f2731;
 
   --screen-gradient: linear-gradient(to bottom, #4e7ace, #4edaf7);
@@ -41,6 +43,7 @@
   --color-main: #53de54;
   --color-main-opacity: rgba(83, 222, 83, 0.8);
   --color-main-light: #ddf8dd;
+  --color-main-medium: #abfaab;
   --color-hover: #0f2731;
 
   --screen-gradient: linear-gradient(to bottom, #1fa422, #83e57e);
@@ -72,6 +75,7 @@
   --color-main: #65b5a1;
   --color-main-opacity: rgba(101, 181, 161, 0.8);
   --color-main-light: #e0f0ec;
+  --color-main-medium: #9df7e0;
   --color-hover: #0f2731;
 
   --screen-gradient: linear-gradient(to bottom, #3e5286, #699aa8);
@@ -110,7 +114,6 @@ html {
 body {
   position: relative;
   font-family: var(--font-calc);
-  /*   min-width: 90rem; */
 }
 
 .main-page {
@@ -509,6 +512,86 @@ input[type='checkbox'].toggle-history-responsive + label {
   transform: translateX(250px);
 }
 
+/********************** Credits Modal **********************/
+
+.credits-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: calc(100% - 15.8rem);
+  background-color: rgba(0, 22, 22, 0.9);
+  color: var(--color-main-light);
+  text-align: center;
+  padding: 2rem;
+}
+
+.credits-modal-hidden {
+  display: none;
+}
+
+.credits-modal ul {
+  list-style: none;
+}
+
+.credits-title-container {
+  position: relative;
+}
+
+.credits-modal h2 {
+  font-size: 7rem;
+  margin-bottom: 3rem;
+  line-height: 0;
+  color: var(--color-main-medium);
+}
+.credits-modal h3 {
+  font-size: 3rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  color: var(--color-main-medium);
+}
+
+.credits-link:link,
+.credits-link:visited {
+  text-decoration: none;
+  color: inherit;
+  font-size: 2.5rem;
+  transition: all 0.2s;
+}
+.credits-link:hover,
+.credits-link:active {
+  color: var(--color-main);
+}
+
+.btn-close-modal {
+  border: none;
+  background: none;
+  width: 5rem;
+  position: absolute;
+  right: -6em;
+  top: -2em;
+
+  fill: white;
+
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-close-modal:hover {
+  transform: scale(1.1);
+  transform: rotate(45deg);
+  cursor: pointer;
+}
+
+.btn-close-modal:active {
+  transform: rotate(180deg);
+}
+
 /********************** Footer Style **********************/
 
 footer {
@@ -538,5 +621,28 @@ footer {
   transform: scale(1.1);
 }
 .icon-github:active {
+  transform: scale(0.9);
+}
+
+.btn-container {
+  width: 12rem;
+  text-align: center;
+}
+.btn-credits {
+  border: none;
+  background: none;
+  color: white;
+  font-family: inherit;
+  font-size: 3rem;
+  letter-spacing: 0.4rem;
+  transition: all 0.2s;
+}
+
+.btn-credits:hover {
+  letter-spacing: 0.8rem;
+  cursor: pointer;
+}
+
+.btn-credits:active {
   transform: scale(0.9);
 }
