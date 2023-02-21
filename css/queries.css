@@ -2,7 +2,7 @@
   /* Animation to display left panel */
   .calc-panel-left-active {
     animation-name: reveal-left-panel;
-    animation-duration: 1.5s;
+    animation-duration: 0.8s;
     animation-fill-mode: forwards;
     animation-timing-function: ease-in-out;
   }
@@ -10,7 +10,7 @@
   /* Animation to display hide panel */
   .calc-panel-left-hidden {
     animation-name: hide-left-panel;
-    animation-duration: 1.5s;
+    animation-duration: 0.8s;
     animation-fill-mode: forwards;
     animation-timing-function: ease-in-out;
   }
@@ -63,53 +63,41 @@
 
   @keyframes reveal-left-panel {
     0% {
-      transform: translateX(0);
-      z-index: 1;
-    }
-    50% {
       transform: translateX(-325px);
-      z-index: 1;
-    }
-    51% {
       z-index: 3;
+      clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
     }
-
     100% {
       transform: translateX(10px);
       z-index: 3;
+      clip-path: polygon(0 0, 100% 0%, 100% 100%, 0% 100%);
     }
   }
   @keyframes hide-left-panel {
     0% {
       transform: translateX(10px);
       z-index: 3;
-    }
-
-    50% {
-      transform: translateX(333px);
-      z-index: 3;
-    }
-    51% {
-      z-index: 1;
+      clip-path: polygon(0 0, 100% 0%, 100% 100%, 0% 100%);
     }
 
     100% {
-      transform: translateX(0);
-      z-index: 1;
+      transform: translateX(-325px);
+      z-index: 3;
+      clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
     }
   }
 
   /* Animation to display right panel */
   .calc-panel-right-active {
     animation-name: reveal-right-panel;
-    animation-duration: 1.5s;
+    animation-duration: 0.8s;
     animation-fill-mode: forwards;
     animation-timing-function: ease-in-out;
   }
   /* Animation to hide right panel */
   .calc-panel-right-hidden {
     animation-name: hide-right-panel;
-    animation-duration: 1.5s;
+    animation-duration: 0.8s;
     animation-fill-mode: forwards;
     animation-timing-function: ease-in-out;
   }
@@ -141,39 +129,28 @@
 
   @keyframes reveal-right-panel {
     0% {
-      transform: translateX(0);
-      z-index: 1;
-    }
-    50% {
       transform: translateX(325px);
-      z-index: 1;
-    }
-    51% {
       z-index: 3;
+      clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
     }
 
     100% {
       transform: translateX(-12px);
       z-index: 3;
+      clip-path: polygon(100% 0, 0 0, 0 100%, 100% 100%);
     }
   }
   @keyframes hide-right-panel {
     0% {
       transform: translateX(-12px);
       z-index: 3;
-    }
-
-    50% {
-      transform: translateX(-333px);
-      z-index: 3;
-    }
-    51% {
-      z-index: 1;
+      clip-path: polygon(100% 0, 0 0, 0 100%, 100% 100%);
     }
 
     100% {
-      transform: translateX(0);
-      z-index: 1;
+      transform: translateX(325px);
+      z-index: 3;
+      clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
     }
   }
 }
