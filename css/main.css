@@ -610,3 +610,7 @@ footer {
   transform: scale(1.1);
   cursor: pointer;
 }
+
+.btn-credits:active {
+  transform: scale(0.9);
+}

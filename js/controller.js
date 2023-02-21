@@ -38,6 +38,10 @@ const calcPanelRightContainer = document.querySelector(
 );
 const btnHistoryDelete = document.querySelector('.btn-history-delete');
 
+// Used for credits modal
+const creditsModal = document.querySelector('.credits-modal');
+const btnCredits = document.querySelector('.btn-credits');
+
 // Audio files for themes
 const audioNeonCity = new Audio('./audio/neon-city.mp3');
 const audioMatrix = new Audio('./audio/matrix.mp3');
@@ -633,6 +637,12 @@ const calculatorLogic = function () {
   }
 };
 
+const displayCredits = function () {
+  btnCredits.addEventListener('click', e => {
+    creditsModal.classList.toggle('credits-modal-hidden');
+  });
+};
+
 collectInputsClick();
 collectInputsKey();
 animateKeys();
@@ -641,3 +651,4 @@ switchThemes();
 animatePanels();
 displayHistoryScreen();
 clearHistory();
+displayCredits();
