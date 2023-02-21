@@ -596,6 +596,11 @@ footer {
 .icon-github:active {
   transform: scale(0.9);
 }
+
+.btn-container {
+  width: 12rem;
+  text-align: center;
+}
 .btn-credits {
   border: none;
   background: none;
@@ -607,7 +612,7 @@ footer {
 }
 
 .btn-credits:hover {
-  transform: scale(1.1);
+  letter-spacing: 0.8rem;
   cursor: pointer;
 }
 
