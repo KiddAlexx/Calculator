@@ -110,7 +110,6 @@ html {
 body {
   position: relative;
   font-family: var(--font-calc);
-  /*   min-width: 90rem; */
 }
 
 .main-page {
@@ -517,9 +516,43 @@ input[type='checkbox'].toggle-history-responsive + label {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 2000;
-  width: 70rem;
-  background-color: green;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 45rem;
+
+  background-color: rgba(0, 22, 22, 0.85);
+  color: var(--color-main-light);
+  border-radius: 2%;
+
   text-align: center;
+  padding: 2rem;
+}
+
+.credits-modal ul {
+  list-style: none;
+}
+
+.credits-modal h2 {
+  font-size: 5rem;
+}
+.credits-modal h3 {
+  font-size: 3rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.credits-link:link,
+.credits-link:visited {
+  text-decoration: none;
+  color: inherit;
+  font-size: 2.5rem;
+  transition: all 0.2s;
+}
+.credits-link:hover,
+.credits-link:active {
+  color: var(--color-main);
 }
 
 /********************** Footer Style **********************/
